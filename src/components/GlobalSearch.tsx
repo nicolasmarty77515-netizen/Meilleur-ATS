@@ -43,8 +43,8 @@ export default function GlobalSearch() {
     // Questionnaire
     {
       type: 'guide' as const,
-      title: 'Questionnaire - Trouvez votre ATS ideal',
-      description: 'Repondez a 5 questions pour decouvrir les meilleurs ATS adaptes a vos besoins.',
+      title: 'Questionnaire - Trouvez votre ATS idéal',
+      description: 'Répondez à 5 questions pour découvrir les meilleurs ATS adaptés à vos besoins.',
       url: '/questionnaire',
       extra: 'questionnaire quiz recommandation conseil accompagnement',
     },

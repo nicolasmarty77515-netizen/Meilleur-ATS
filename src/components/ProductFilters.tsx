@@ -48,11 +48,11 @@ export const DEFAULT_FILTERS: Filters = {
 /* ------------------------------------------------------------------ */
 
 const PROFILE_OPTIONS: { key: ProfileFilterKey; label: string }[] = [
-  { key: 'independant', label: 'Independant' },
+  { key: 'independant', label: 'Indépendant' },
   { key: 'sourceur', label: 'Sourceur' },
   { key: 'chasseur', label: 'Chasseur' },
   { key: 'cabinet', label: 'Cabinet' },
-  { key: 'interim', label: 'Interim' },
+  { key: 'interim', label: 'Intérim' },
   { key: 'collectif', label: 'Collectif' },
   { key: 'rhInterne', label: 'RH interne' },
   { key: 'consultant', label: 'Consultant' },
@@ -69,12 +69,12 @@ const PRICE_OPTIONS: { key: PriceRange; label: string }[] = [
 ];
 
 const FEATURE_OPTIONS: { key: FeatureFilterKey; label: string }[] = [
-  { key: 'crm', label: 'CRM integre' },
+  { key: 'crm', label: 'CRM intégré' },
   { key: 'aiMatching', label: 'Matching IA' },
   { key: 'multiposting', label: 'Multiposting' },
   { key: 'cvParsing', label: 'Parsing CV' },
-  { key: 'careerPage', label: 'Page carriere' },
-  { key: 'videoInterview', label: 'Entretien video' },
+  { key: 'careerPage', label: 'Page carrière' },
+  { key: 'videoInterview', label: 'Entretien vidéo' },
 ];
 
 const SORT_OPTIONS: { key: SortOption; label: string }[] = [
@@ -208,14 +208,14 @@ export default function ProductFilters({ filters, onChange }: ProductFiltersProp
                 onChange={(e) => update({ hostedInFrance: e.target.checked })}
                 className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
               />
-              <span className="text-gray-700">Heberge en France</span>
+              <span className="text-gray-700">Hébergé en France</span>
             </label>
           </div>
         </div>
 
         {/* ---- Features ---- */}
         <div className="mt-5">
-          <span className="mb-2 block text-sm font-medium text-gray-700">Fonctionnalites</span>
+          <span className="mb-2 block text-sm font-medium text-gray-700">Fonctionnalités</span>
           <div className="flex flex-wrap gap-2">
             {FEATURE_OPTIONS.map((f) => {
               const active = filters.features.includes(f.key);
@@ -245,7 +245,7 @@ export default function ProductFilters({ filters, onChange }: ProductFiltersProp
               onClick={resetAll}
               className="text-sm font-medium text-blue-600 transition hover:text-blue-800"
             >
-              Reinitialiser les filtres
+              Réinitialiser les filtres
             </button>
           </div>
         )}

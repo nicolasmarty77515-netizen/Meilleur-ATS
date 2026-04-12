@@ -3,67 +3,67 @@ import type { ProfileSlug } from './types';
 export const SITE_NAME = 'Meilleur ATS';
 export const SITE_URL = 'https://meilleur-ats.fr';
 export const SITE_DESCRIPTION =
-  'Comparatif independant des meilleurs logiciels de recrutement (ATS) en France. Trouvez la solution adaptee a votre profil : cabinet, independant, RH, interim.';
+  'Comparatif indépendant des meilleurs logiciels de recrutement (ATS) en France. Trouvez la solution adaptée à votre profil : cabinet, indépendant, RH, intérim.';
 
 export const PROFILES: Record<
   ProfileSlug,
   { name: string; shortName: string; icon: string; description: string; keyNeeds: string[] }
 > = {
   'recruteur-independant': {
-    name: 'Recruteur independant / Freelance',
-    shortName: 'Independant',
+    name: 'Recruteur indépendant / Freelance',
+    shortName: 'Indépendant',
     icon: '🧑‍💼',
     description:
-      'Vous recrutez en solo et cherchez un outil abordable avec CRM integre et automatisation LinkedIn.',
-    keyNeeds: ['Cout bas', 'CRM + ATS', 'LinkedIn automation', 'Multiposting'],
+      'Vous recrutez en solo et cherchez un outil abordable avec CRM intégré et automatisation LinkedIn.',
+    keyNeeds: ['Coût bas', 'CRM + ATS', 'LinkedIn automation', 'Multiposting'],
   },
   sourceur: {
     name: 'Sourceur',
     shortName: 'Sourceur',
     icon: '🔍',
     description:
-      'Vous identifiez et qualifiez des candidats. Vous avez besoin de sourcing avance et de matching IA.',
+      'Vous identifiez et qualifiez des candidats. Vous avez besoin de sourcing avancé et de matching IA.',
     keyNeeds: ['LinkedIn sourcing', 'CV database', 'IA matching', 'Boolean search'],
   },
   'chasseur-de-tetes': {
-    name: 'Chasseur de tetes',
+    name: 'Chasseur de têtes',
     shortName: 'Chasseur',
     icon: '🎯',
     description:
-      'Vous recrutez des profils cadres et dirigeants. Gestion clients et relation candidat sont vos priorites.',
-    keyNeeds: ['Gestion clients (CRM)', 'Relation candidat', 'Confidentialite', 'Reporting'],
+      'Vous recrutez des profils cadres et dirigeants. Gestion clients et relation candidat sont vos priorités.',
+    keyNeeds: ['Gestion clients (CRM)', 'Relation candidat', 'Confidentialité', 'Reporting'],
   },
   'cabinet-recrutement': {
     name: 'Cabinet de recrutement',
     shortName: 'Cabinet',
     icon: '🏢',
     description:
-      'Vous gerez une equipe de consultants et plusieurs clients. Collaboration et facturation sont essentiels.',
+      'Vous gérez une équipe de consultants et plusieurs clients. Collaboration et facturation sont essentiels.',
     keyNeeds: ['Multi-utilisateurs', 'Facturation', 'Collaboration', 'Vivier candidats'],
   },
   interim: {
-    name: "Agence d'interim / Travail temporaire",
-    shortName: 'Interim',
+    name: "Agence d'intérim / Travail temporaire",
+    shortName: 'Intérim',
     icon: '⏱️',
     description:
-      'Vous gerez des placements a court terme avec un volume eleve. Integration paie et gestion contractuelle sont cles.',
-    keyNeeds: ['Contrats courts', 'Volume eleve', 'Integration paie', 'Gestion contractuelle'],
+      'Vous gérez des placements à court terme avec un volume élevé. Intégration paie et gestion contractuelle sont clés.',
+    keyNeeds: ['Contrats courts', 'Volume élevé', 'Intégration paie', 'Gestion contractuelle'],
   },
   'collectif-recruteurs': {
     name: 'Collectif de recruteurs',
     shortName: 'Collectif',
     icon: '👥',
     description:
-      'Vous travaillez en collectif independant. Partage de vivier et collaboration sont vos besoins principaux.',
-    keyNeeds: ['Collaboration', 'Vivier partage', 'Workflow', 'Repartition missions'],
+      'Vous travaillez en collectif indépendant. Partage de vivier et collaboration sont vos besoins principaux.',
+    keyNeeds: ['Collaboration', 'Vivier partagé', 'Workflow', 'Répartition missions'],
   },
   'rh-interne': {
     name: 'RH interne',
     shortName: 'RH interne',
     icon: '🏠',
     description:
-      'Vous recrutez pour votre entreprise (PME, ETI ou grand groupe). Simplicite et integration SIRH comptent.',
-    keyNeeds: ['Multiposting', 'Simplicite', 'Integration SIRH', 'Marque employeur'],
+      'Vous recrutez pour votre entreprise (PME, ETI ou grand groupe). Simplicité et intégration SIRH comptent.',
+    keyNeeds: ['Multiposting', 'Simplicité', 'Intégration SIRH', 'Marque employeur'],
   },
   'consultant-recrutement': {
     name: 'Consultant en recrutement',
@@ -79,13 +79,13 @@ export const PROFILE_SLUGS = Object.keys(PROFILES) as ProfileSlug[];
 
 export const FEATURE_LABELS: Record<string, string> = {
   multiposting: 'Multiposting',
-  crm: 'CRM integre',
-  sirh: 'SIRH integre',
+  crm: 'CRM intégré',
+  sirh: 'SIRH intégré',
   aiMatching: 'Matching IA',
   cvParsing: 'Parsing CV',
-  careerPage: 'Page carriere',
-  videoInterview: 'Entretien video',
-  assessments: 'Tests & evaluations',
+  careerPage: 'Page carrière',
+  videoInterview: 'Entretien vidéo',
+  assessments: 'Tests & évaluations',
   reporting: 'Reporting & analytics',
   api: 'API disponible',
   mobileApp: 'Application mobile',
@@ -109,16 +109,19 @@ export const PRICING_MODEL_LABELS: Record<string, string> = {
   free: 'Gratuit',
 };
 
-/** Code ISO 2 lettres pour chaque pays (utilise pour les images de drapeaux) */
+/** Code ISO 2 lettres pour chaque pays (utilisé pour les images de drapeaux) */
 export const COUNTRY_CODES: Record<string, string> = {
   France: 'fr',
   'Etats-Unis': 'us',
+  'États-Unis': 'us',
   'United States': 'us',
   Suede: 'se',
+  Suède: 'se',
   Allemagne: 'de',
   'Pays-Bas': 'nl',
   Inde: 'in',
   Thailande: 'th',
+  Thaïlande: 'th',
   'Royaume-Uni': 'gb',
   Espagne: 'es',
   Canada: 'ca',
@@ -133,7 +136,7 @@ export const RATING_SOURCES = [
 ];
 
 export const RATING_DISCLAIMER =
-  'Notes basees sur une synthese editoriale des avis publies sur G2, Capterra et Trustpilot. Elles ne constituent pas un classement certifie. Derniere verification a la date indiquee.';
+  'Notes basées sur une synthèse éditoriale des avis publiés sur G2, Capterra et Trustpilot. Elles ne constituent pas un classement certifié. Dernière vérification à la date indiquée.';
 
 export const PROFILE_KEY_TO_SLUG: Record<string, ProfileSlug> = {
   independant: 'recruteur-independant',

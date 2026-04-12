@@ -12,7 +12,7 @@ export default function ProfileSelector() {
           Quel est votre profil ?
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-lg text-gray-600">
-          Chaque metier du recrutement a ses besoins. Trouvez l&apos;ATS adapte au votre.
+          Chaque métier du recrutement a ses besoins. Trouvez l&apos;ATS adapté au vôtre.
         </p>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

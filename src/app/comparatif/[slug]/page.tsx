@@ -54,11 +54,11 @@ export default async function ComparatifPage({ params }: PageProps) {
 
   const ratingKeys = [
     { key: 'overall', label: 'Note globale' },
-    { key: 'easeOfUse', label: "Facilite d'utilisation" },
-    { key: 'features', label: 'Fonctionnalites' },
+    { key: 'easeOfUse', label: "Facilité d'utilisation" },
+    { key: 'features', label: 'Fonctionnalités' },
     { key: 'support', label: 'Support client' },
-    { key: 'valueForMoney', label: 'Rapport qualite/prix' },
-    { key: 'candidateExperience', label: 'Experience candidat' },
+    { key: 'valueForMoney', label: 'Rapport qualité/prix' },
+    { key: 'candidateExperience', label: 'Expérience candidat' },
   ];
 
   return (
@@ -85,7 +85,7 @@ export default async function ComparatifPage({ params }: PageProps) {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-gray-200 bg-gray-50">
-                    <th className="px-4 py-3 text-left font-semibold text-gray-700">Critere</th>
+                    <th className="px-4 py-3 text-left font-semibold text-gray-700">Critère</th>
                     <th className="px-4 py-3 text-center font-semibold text-gray-900">
                       <span className="mr-1 inline-block align-middle"><CountryFlag country={productA.headquarter} size="sm" /></span>
                       {productA.name}
@@ -120,15 +120,15 @@ export default async function ComparatifPage({ params }: PageProps) {
           {/* Radar comparison */}
           <section className="mt-10">
             <h2 className="text-2xl font-bold text-gray-900">Comparaison visuelle</h2>
-            <p className="mt-1 text-sm text-gray-500">Selectionnez les criteres a comparer sur le radar</p>
+            <p className="mt-1 text-sm text-gray-500">Sélectionnez les critères à comparer sur le radar</p>
             <div className="mt-4 rounded-xl border border-gray-200 bg-white p-6">
               <RadarChart
                 dimensions={[
                   { key: 'overall', label: 'Note globale', max: 5 },
                   { key: 'easeOfUse', label: 'Prise en main', max: 5 },
-                  { key: 'features', label: 'Fonctionnalites', max: 5 },
+                  { key: 'features', label: 'Fonctionnalités', max: 5 },
                   { key: 'support', label: 'Support', max: 5 },
-                  { key: 'valueForMoney', label: 'Qualite/Prix', max: 5 },
+                  { key: 'valueForMoney', label: 'Qualité/Prix', max: 5 },
                   { key: 'candidateExperience', label: 'Exp. candidat', max: 5 },
                 ]}
                 datasets={[
@@ -149,12 +149,12 @@ export default async function ComparatifPage({ params }: PageProps) {
 
           {/* Features comparison */}
           <section className="mt-10">
-            <h2 className="text-2xl font-bold text-gray-900">Comparaison des fonctionnalites</h2>
+            <h2 className="text-2xl font-bold text-gray-900">Comparaison des fonctionnalités</h2>
             <div className="mt-4 overflow-hidden rounded-xl border border-gray-200">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-gray-200 bg-gray-50">
-                    <th className="px-4 py-3 text-left font-semibold text-gray-700">Fonctionnalite</th>
+                    <th className="px-4 py-3 text-left font-semibold text-gray-700">Fonctionnalité</th>
                     <th className="px-4 py-3 text-center font-semibold text-gray-900">
                       <span className="mr-1 inline-block align-middle"><CountryFlag country={productA.headquarter} size="sm" /></span>
                       {productA.name}

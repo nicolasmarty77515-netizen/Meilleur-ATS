@@ -7,7 +7,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 export const metadata: Metadata = {
   title: 'Tous les logiciels ATS - Comparatif complet',
   description:
-    'Liste complete et comparatif de tous les logiciels de recrutement (ATS) disponibles en France. Filtrez par prix, fonctionnalites et profil.',
+    'Liste complète et comparatif de tous les logiciels de recrutement (ATS) disponibles en France. Filtrez par prix, fonctionnalités et profil.',
   alternates: { canonical: '/logiciels' },
 };
 
@@ -31,8 +31,8 @@ export default function LogicielsPage() {
             Comparatif des logiciels ATS en France
           </h1>
           <p className="mt-3 max-w-3xl text-lg text-gray-600">
-            {products.length} solutions de recrutement comparees. Trouvez celle qui correspond a
-            vos besoins en termes de fonctionnalites, prix et profil.
+            {products.length} solutions de recrutement comparées. Trouvez celle qui correspond à
+            vos besoins en termes de fonctionnalités, prix et profil.
           </p>
 
           <div className="mt-10">
@@ -41,7 +41,7 @@ export default function LogicielsPage() {
 
           {products.length === 0 && (
             <p className="mt-10 text-center text-gray-500">
-              Les fiches logiciels sont en cours de creation. Revenez bientot !
+              Les fiches logiciels sont en cours de création. Revenez bientôt !
             </p>
           )}
         </div>

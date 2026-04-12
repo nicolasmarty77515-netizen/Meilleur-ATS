@@ -92,7 +92,7 @@ export default async function ProfilPage({ params }: PageProps) {
           <h2 className="mt-12 text-2xl font-bold text-gray-900">
             {products.length > 0
               ? `Les ${products.length} meilleurs ATS pour ce profil`
-              : 'Logiciels recommandes'}
+              : 'Logiciels recommandés'}
           </h2>
 
           {products.length > 0 ? (
@@ -103,7 +103,7 @@ export default async function ProfilPage({ params }: PageProps) {
             </div>
           ) : (
             <p className="mt-6 text-gray-500">
-              Les recommandations pour ce profil arrivent bientot.
+              Les recommandations pour ce profil arrivent bientôt.
             </p>
           )}
 

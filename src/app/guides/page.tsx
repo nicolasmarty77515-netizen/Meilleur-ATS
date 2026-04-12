@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const CATEGORY_COLORS: Record<string, string> = {
   Guide: 'bg-blue-100 text-blue-700',
-  Reglementation: 'bg-red-100 text-red-700',
+  Réglementation: 'bg-red-100 text-red-700',
   Comparatif: 'bg-orange-100 text-orange-700',
 };
 
@@ -35,7 +35,7 @@ export default function GuidesPage() {
         <div className="mt-8 flex justify-center gap-8 text-center text-sm text-gray-500">
           <div>
             <span className="block text-2xl font-bold text-gray-900">{guides.length}</span>
-            guides publies
+            guides publiés
           </div>
           <div>
             <span className="block text-2xl font-bold text-gray-900">
@@ -97,7 +97,7 @@ export default function GuidesPage() {
           })}
 
           {guides.length === 0 && (
-            <p className="text-center text-gray-500">Les guides arrivent bientot !</p>
+            <p className="text-center text-gray-500">Les guides arrivent bientôt !</p>
           )}
         </div>
       </div>

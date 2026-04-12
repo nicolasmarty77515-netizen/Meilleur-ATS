@@ -80,7 +80,18 @@
       "Bash(gh auth:*)",
       "Bash(\"/c/Program Files/GitHub CLI/gh.exe\" auth status)",
       "Bash(\"/c/Program Files \\(x86\\)/GitHub CLI/gh.exe\" auth status)",
-      "Bash(cmd /c \"gh auth status\")"
+      "Bash(cmd /c \"gh auth status\")",
+      "Bash(cmd /c \"gh repo create Meilleur-ATS --public --source=. --remote=origin --push\")",
+      "Bash(cmd /c \"gh repo create Meilleur-ATS --public --source=. --remote=origin --push 2>&1\")",
+      "Bash(cmd /c \"gh repo create Meilleur-ATS --public --source . --remote origin --push\")",
+      "Read(//tmp/**)",
+      "Read(//c/Program Files/GitHub CLI//**)",
+      "Read(//c/Program Files \\(x86\\)/**)",
+      "Bash(cmd /c \"where gh\")",
+      "Bash(\"/c/Program Files/GitHub CLI/gh.exe\" repo create Meilleur-ATS --public --source \"C:/Users/nicol/Downloads/Meilleur-ATS\" --remote origin --push)",
+      "Bash(npx vercel:*)",
+      "Bash(node -e \"console.log\\(process.cwd\\(\\)\\)\")",
+      "Bash(node fix-accents.js)"
     ]
   }
 }

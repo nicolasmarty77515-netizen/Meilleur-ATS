@@ -68,7 +68,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         )}
         {product.dataHosting === 'France' && (
           <span className="rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs font-medium text-indigo-700">
-            Heberge en France
+            Hébergé en France
           </span>
         )}
         {product.browserExtensions?.chrome.available && (

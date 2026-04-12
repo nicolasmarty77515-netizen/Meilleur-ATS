@@ -130,7 +130,7 @@ export default function SearchModal({ items }: SearchModalProps) {
             <div className="max-h-80 overflow-y-auto">
               {query.trim() && results.length === 0 && (
                 <div className="px-4 py-8 text-center text-sm text-gray-500">
-                  Aucun resultat pour &laquo; {query} &raquo;
+                  Aucun résultat pour &laquo; {query} &raquo;
                 </div>
               )}
 
@@ -171,7 +171,7 @@ export default function SearchModal({ items }: SearchModalProps) {
             {/* Footer */}
             <div className="flex items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-2 text-xs text-gray-400">
               <span>
-                <kbd className="rounded border border-gray-200 bg-white px-1">Entree</kbd> pour ouvrir
+                <kbd className="rounded border border-gray-200 bg-white px-1">Entrée</kbd> pour ouvrir
               </span>
               <span>
                 <kbd className="rounded border border-gray-200 bg-white px-1">Esc</kbd> pour fermer

@@ -45,10 +45,10 @@ export default function HomeShowcase({ products }: HomeShowcaseProps) {
     <section className="bg-gray-50 py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-center text-3xl font-bold text-gray-900">
-          Decouvrez nos {products.length} logiciels ATS
+          Découvrez nos {products.length} logiciels ATS
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-center text-gray-600">
-          Recherchez par nom, pays ou fonctionnalite. L&apos;ordre est aleatoire pour une decouverte equitable.
+          Recherchez par nom, pays ou fonctionnalité. L&apos;ordre est aléatoire pour une découverte équitable.
         </p>
 
         {/* Search bar */}
@@ -90,7 +90,7 @@ export default function HomeShowcase({ products }: HomeShowcaseProps) {
         {/* Results count when searching */}
         {search.trim() && (
           <p className="mt-4 text-center text-sm text-gray-500">
-            {filtered.length} resultat{filtered.length !== 1 ? 's' : ''} pour &laquo; {search} &raquo;
+            {filtered.length} résultat{filtered.length !== 1 ? 's' : ''} pour &laquo; {search} &raquo;
           </p>
         )}
 
@@ -103,7 +103,7 @@ export default function HomeShowcase({ products }: HomeShowcaseProps) {
           </div>
         ) : (
           <div className="mt-10 rounded-xl border border-gray-200 bg-white p-8 text-center">
-            <p className="text-gray-500">Aucun ATS ne correspond a votre recherche.</p>
+            <p className="text-gray-500">Aucun ATS ne correspond à votre recherche.</p>
             <button
               onClick={() => setSearch('')}
               className="mt-3 text-sm font-medium text-blue-600 hover:text-blue-800"
@@ -120,7 +120,7 @@ export default function HomeShowcase({ products }: HomeShowcaseProps) {
               href="/logiciels"
               className="font-semibold text-blue-700 hover:text-blue-800"
             >
-              Voir les {products.length} logiciels avec filtres avances &rarr;
+              Voir les {products.length} logiciels avec filtres avancés &rarr;
             </Link>
           </div>
         )}

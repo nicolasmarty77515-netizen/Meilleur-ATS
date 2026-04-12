@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold text-gray-900">{SITE_NAME}</h3>
             <p className="mt-2 text-sm text-gray-600">
-              Comparatif independant des meilleurs logiciels de recrutement en France.
+              Comparatif indépendant des meilleurs logiciels de recrutement en France.
             </p>
           </div>
 
@@ -33,7 +33,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/a-propos" className="text-gray-600 hover:text-blue-700">
-                  A propos
+                  À propos
                 </Link>
               </li>
             </ul>
@@ -69,7 +69,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 border-t border-gray-200 pt-6 text-center text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} {SITE_NAME}. Tous droits reserves.
+          &copy; {new Date().getFullYear()} {SITE_NAME}. Tous droits réservés.
         </div>
       </div>
     </footer>

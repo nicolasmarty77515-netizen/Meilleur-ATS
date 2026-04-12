@@ -104,7 +104,7 @@ export default async function ProductPage({ params }: PageProps) {
               </span>
               <div>
                 <p className={`text-sm font-bold ${product.features.crm ? 'text-blue-900' : 'text-gray-400'}`}>
-                  CRM integre
+                  CRM intégré
                 </p>
                 <p className="text-xs text-gray-500">
                   {product.features.crm ? 'Gestion relation clients' : 'Non disponible'}
@@ -133,10 +133,10 @@ export default async function ProductPage({ params }: PageProps) {
               </span>
               <div>
                 <p className={`text-sm font-bold ${product.features.sirh ? 'text-purple-900' : 'text-gray-400'}`}>
-                  SIRH integre
+                  SIRH intégré
                 </p>
                 <p className="text-xs text-gray-500">
-                  {product.features.sirh ? 'Gestion RH complete' : 'Non disponible'}
+                  {product.features.sirh ? 'Gestion RH complète' : 'Non disponible'}
                 </p>
               </div>
             </div>
@@ -200,19 +200,19 @@ export default async function ProductPage({ params }: PageProps) {
           {/* Key info */}
           <div className="mt-4 grid gap-4 rounded-xl border border-gray-200 bg-gray-50 p-6 sm:grid-cols-2 lg:grid-cols-4">
             <div>
-              <span className="text-sm text-gray-500">Siege</span>
+              <span className="text-sm text-gray-500">Siège</span>
               <p className="flex items-center gap-1.5 font-medium">
                 <CountryFlag country={product.headquarter} size="sm" />
                 {product.headquarter}
               </p>
             </div>
             <div>
-              <span className="text-sm text-gray-500">Hebergement</span>
+              <span className="text-sm text-gray-500">Hébergement</span>
               <p className="font-medium">{product.dataHosting}</p>
             </div>
             <div>
               <span className="text-sm text-gray-500">RGPD</span>
-              <p className="font-medium">{product.rgpdCompliant ? 'Conforme' : 'Non confirme'}</p>
+              <p className="font-medium">{product.rgpdCompliant ? 'Conforme' : 'Non confirmé'}</p>
             </div>
             <div>
               <span className="text-sm text-gray-500">Essai gratuit</span>
@@ -293,16 +293,16 @@ export default async function ProductPage({ params }: PageProps) {
 
           {/* Ratings detail */}
           <section className="mt-10">
-            <h2 className="text-2xl font-bold text-gray-900">Notes detaillees</h2>
+            <h2 className="text-2xl font-bold text-gray-900">Notes détaillées</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {Object.entries(product.ratings).map(([key, value]) => {
                 const labels: Record<string, string> = {
                   overall: 'Note globale',
-                  easeOfUse: "Facilite d'utilisation",
-                  features: 'Fonctionnalites',
+                  easeOfUse: "Facilité d'utilisation",
+                  features: 'Fonctionnalités',
                   support: 'Support client',
-                  valueForMoney: 'Rapport qualite/prix',
-                  candidateExperience: 'Experience candidat',
+                  valueForMoney: 'Rapport qualité/prix',
+                  candidateExperience: 'Expérience candidat',
                 };
                 return (
                   <div key={key} className="flex items-center justify-between rounded-lg border border-gray-100 bg-white px-4 py-3">
@@ -336,12 +336,12 @@ export default async function ProductPage({ params }: PageProps) {
 
             {/* Methodology */}
             <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
-              <p className="text-sm font-semibold text-amber-900">Methodologie de notation</p>
+              <p className="text-sm font-semibold text-amber-900">Méthodologie de notation</p>
               <p className="mt-1 text-xs leading-relaxed text-amber-800">
-                La <strong>note globale ({product.ratings.overall}/5)</strong> est la moyenne ponderee de 5 criteres :
-                Facilite d&apos;utilisation ({product.ratings.easeOfUse}), Fonctionnalites ({product.ratings.features}),
-                Support client ({product.ratings.support}), Rapport qualite/prix ({product.ratings.valueForMoney})
-                et Experience candidat ({product.ratings.candidateExperience}).
+                La <strong>note globale ({product.ratings.overall}/5)</strong> est la moyenne pondérée de 5 critères :
+                Facilité d&apos;utilisation ({product.ratings.easeOfUse}), Fonctionnalités ({product.ratings.features}),
+                Support client ({product.ratings.support}), Rapport qualité/prix ({product.ratings.valueForMoney})
+                et Expérience candidat ({product.ratings.candidateExperience}).
               </p>
               <p className="mt-2 text-xs text-amber-700">
                 {RATING_DISCLAIMER}
@@ -352,15 +352,15 @@ export default async function ProductPage({ params }: PageProps) {
           {/* Radar chart */}
           <section className="mt-10">
             <h2 className="text-2xl font-bold text-gray-900">Visualisation radar</h2>
-            <p className="mt-1 text-sm text-gray-500">Selectionnez les criteres a afficher sur le graphique</p>
+            <p className="mt-1 text-sm text-gray-500">Sélectionnez les critères à afficher sur le graphique</p>
             <div className="mt-4 rounded-xl border border-gray-200 bg-white p-6">
               <RadarChart
                 dimensions={[
                   { key: 'overall', label: 'Note globale', max: 5 },
                   { key: 'easeOfUse', label: 'Prise en main', max: 5 },
-                  { key: 'features', label: 'Fonctionnalites', max: 5 },
+                  { key: 'features', label: 'Fonctionnalités', max: 5 },
                   { key: 'support', label: 'Support', max: 5 },
-                  { key: 'valueForMoney', label: 'Qualite/Prix', max: 5 },
+                  { key: 'valueForMoney', label: 'Qualité/Prix', max: 5 },
                   { key: 'candidateExperience', label: 'Exp. candidat', max: 5 },
                 ]}
                 datasets={[
@@ -402,7 +402,7 @@ export default async function ProductPage({ params }: PageProps) {
 
           {/* Features */}
           <section className="mt-10">
-            <h2 className="text-2xl font-bold text-gray-900">Fonctionnalites</h2>
+            <h2 className="text-2xl font-bold text-gray-900">Fonctionnalités</h2>
             <div className="mt-4 grid gap-2 sm:grid-cols-2">
               {featureEntries.map(([key, label]) => {
                 const value = product.features[key as keyof typeof product.features];
@@ -439,7 +439,7 @@ export default async function ProductPage({ params }: PageProps) {
 
           {/* Integrations */}
           <section className="mt-10">
-            <h2 className="text-2xl font-bold text-gray-900">Integrations</h2>
+            <h2 className="text-2xl font-bold text-gray-900">Intégrations</h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {integrationEntries.map(([key, label]) => {
                 const active = product.integrations[key as keyof typeof product.integrations];
@@ -517,7 +517,7 @@ export default async function ProductPage({ params }: PageProps) {
                         )}
                         {ext.users == null && key !== 'edge' && (
                           <p className="text-xs text-gray-400 italic">
-                            Nombre d&apos;utilisateurs non communique
+                            Nombre d&apos;utilisateurs non communiqué
                           </p>
                         )}
                         {key === 'edge' && (
@@ -536,7 +536,7 @@ export default async function ProductPage({ params }: PageProps) {
           {/* CTA */}
           <div className="mt-10 rounded-xl border border-blue-200 bg-blue-50 p-6 text-center">
             <p className="text-lg font-semibold text-gray-900">
-              Interesse par {product.name} ?
+              Intéressé par {product.name} ?
             </p>
             <a
               href={product.website}
@@ -549,7 +549,7 @@ export default async function ProductPage({ params }: PageProps) {
           </div>
 
           <p className="mt-8 text-sm text-gray-400">
-            Derniere mise a jour : {product.updatedAt}
+            Dernière mise à jour : {product.updatedAt}
           </p>
         </div>
       </article>

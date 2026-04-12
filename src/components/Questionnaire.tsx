@@ -41,11 +41,11 @@ const INITIAL_ANSWERS: Answers = {
 /* ---------- Constants ---------- */
 
 const PROFILES: { key: ProfileKey; label: string; icon: string; desc: string }[] = [
-  { key: 'independant', label: 'Recruteur independant', icon: '🧑‍💼', desc: 'Freelance, solo' },
+  { key: 'independant', label: 'Recruteur indépendant', icon: '🧑‍💼', desc: 'Freelance, solo' },
   { key: 'sourceur', label: 'Sourceur', icon: '🔍', desc: 'Identification de talents' },
-  { key: 'chasseur', label: 'Chasseur de tetes', icon: '🎯', desc: 'Cadres et dirigeants' },
-  { key: 'cabinet', label: 'Cabinet de recrutement', icon: '🏢', desc: 'Equipe de consultants' },
-  { key: 'interim', label: 'Agence interim', icon: '⏱️', desc: 'Travail temporaire' },
+  { key: 'chasseur', label: 'Chasseur de têtes', icon: '🎯', desc: 'Cadres et dirigeants' },
+  { key: 'cabinet', label: 'Cabinet de recrutement', icon: '🏢', desc: 'Équipe de consultants' },
+  { key: 'interim', label: 'Agence intérim', icon: '⏱️', desc: 'Travail temporaire' },
   { key: 'collectif', label: 'Collectif de recruteurs', icon: '👥', desc: 'Travail collaboratif' },
   { key: 'rhInterne', label: 'RH interne', icon: '🏠', desc: 'PME, ETI, grand groupe' },
   { key: 'consultant', label: 'Consultant recrutement', icon: '💼', desc: 'Multi-clients' },
@@ -53,37 +53,37 @@ const PROFILES: { key: ProfileKey; label: string; icon: string; desc: string }[]
 
 const TEAM_SIZES = [
   { value: 'solo', label: 'Solo', desc: '1 utilisateur' },
-  { value: '2-5', label: 'Petite equipe', desc: '2 a 5 utilisateurs' },
-  { value: '6-20', label: 'Equipe moyenne', desc: '6 a 20 utilisateurs' },
-  { value: '20+', label: 'Grande equipe', desc: 'Plus de 20 utilisateurs' },
+  { value: '2-5', label: 'Petite équipe', desc: '2 à 5 utilisateurs' },
+  { value: '6-20', label: 'Équipe moyenne', desc: '6 à 20 utilisateurs' },
+  { value: '20+', label: 'Grande équipe', desc: 'Plus de 20 utilisateurs' },
 ];
 
 const BUDGETS = [
   { value: 'free', label: 'Gratuit', desc: 'Solution gratuite uniquement' },
-  { value: '<50', label: 'Moins de 50 EUR/mois', desc: 'Budget serre' },
+  { value: '<50', label: 'Moins de 50 EUR/mois', desc: 'Budget serré' },
   { value: '50-150', label: '50 - 150 EUR/mois', desc: 'Budget moyen' },
   { value: '150-500', label: '150 - 500 EUR/mois', desc: 'Budget confortable' },
   { value: '500+', label: 'Plus de 500 EUR/mois', desc: 'Budget enterprise' },
-  { value: 'no-limit', label: 'Pas de contrainte', desc: 'Le prix n\'est pas un critere' },
+  { value: 'no-limit', label: 'Pas de contrainte', desc: 'Le prix n\'est pas un critère' },
 ];
 
 const FEATURE_OPTIONS = [
-  { key: 'crm', label: 'CRM integre', desc: 'Gestion de la relation clients' },
-  { key: 'sirh', label: 'SIRH integre', desc: 'Gestion RH complete (conges, paie...)' },
+  { key: 'crm', label: 'CRM intégré', desc: 'Gestion de la relation clients' },
+  { key: 'sirh', label: 'SIRH intégré', desc: 'Gestion RH complète (congés, paie...)' },
   { key: 'multiposting', label: 'Multiposting', desc: 'Diffusion sur plusieurs jobboards' },
   { key: 'aiMatching', label: 'IA / Matching', desc: 'Intelligence artificielle pour le tri' },
   { key: 'cvParsing', label: 'Parsing CV', desc: 'Extraction automatique des CV' },
-  { key: 'careerPage', label: 'Page carriere', desc: 'Site carriere personnalisable' },
-  { key: 'videoInterview', label: 'Entretien video', desc: 'Visioconference integree' },
-  { key: 'mobileApp', label: 'Application mobile', desc: 'Acces iOS / Android' },
-  { key: 'collaborativeHiring', label: 'Recrutement collaboratif', desc: 'Avis d\'equipe, scorecards' },
+  { key: 'careerPage', label: 'Page carrière', desc: 'Site carrière personnalisable' },
+  { key: 'videoInterview', label: 'Entretien vidéo', desc: 'Visioconférence intégrée' },
+  { key: 'mobileApp', label: 'Application mobile', desc: 'Accès iOS / Android' },
+  { key: 'collaborativeHiring', label: 'Recrutement collaboratif', desc: 'Avis d\'équipe, scorecards' },
   { key: 'reporting', label: 'Reporting', desc: 'Tableaux de bord et analytics' },
-  { key: 'api', label: 'API disponible', desc: 'Integrations sur-mesure' },
+  { key: 'api', label: 'API disponible', desc: 'Intégrations sur-mesure' },
 ];
 
 const HOSTING_OPTIONS = [
-  { value: 'france', label: 'France obligatoire', desc: 'Donnees hebergees en France' },
-  { value: 'eu', label: 'Union Europeenne', desc: 'France ou UE acceptable' },
+  { value: 'france', label: 'France obligatoire', desc: 'Données hébergées en France' },
+  { value: 'eu', label: 'Union Européenne', desc: 'France ou UE acceptable' },
   { value: 'any', label: 'Pas de contrainte', desc: 'Peu importe la localisation' },
 ];
 
@@ -163,7 +163,7 @@ function getMatchReasons(product: ProductFrontmatter, answers: Answers): string[
 
   if (answers.profile) {
     const profileScore = product.targetProfiles[answers.profile] ?? 1;
-    if (profileScore >= 4) reasons.push('Tres adapte a votre profil');
+    if (profileScore >= 4) reasons.push('Très adapté à votre profil');
     else if (profileScore >= 3) reasons.push('Compatible avec votre profil');
   }
 
@@ -180,7 +180,7 @@ function getMatchReasons(product: ProductFrontmatter, answers: Answers): string[
   }
 
   if (answers.hosting === 'france' && product.dataHosting === 'France') {
-    reasons.push('Heberge en France');
+    reasons.push('Hébergé en France');
   }
 
   if (answers.rgpd && product.rgpdCompliant) {
@@ -253,7 +253,7 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
         <div className="mb-8">
           <div className="flex items-center justify-between text-sm text-gray-500">
             <span>
-              Etape {step} / {TOTAL_STEPS - 1}
+              Étape {step} / {TOTAL_STEPS - 1}
             </span>
             <span>{Math.round(progressPercent)}%</span>
           </div>
@@ -271,7 +271,7 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
         <div>
           <h2 className="text-2xl font-bold text-gray-900">Quel est votre profil ?</h2>
           <p className="mt-2 text-gray-600">
-            Selectionnez le profil qui correspond le mieux a votre activite.
+            Sélectionnez le profil qui correspond le mieux à votre activité.
           </p>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {PROFILES.map(({ key, label, icon, desc }) => (
@@ -303,7 +303,7 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
       {/* Step 2: Team size */}
       {step === 2 && (
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Quelle est la taille de votre equipe ?</h2>
+          <h2 className="text-2xl font-bold text-gray-900">Quelle est la taille de votre équipe ?</h2>
           <p className="mt-2 text-gray-600">
             Combien de personnes utiliseront l&apos;outil au quotidien ?
           </p>
@@ -356,10 +356,10 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
       {step === 4 && (
         <div>
           <h2 className="text-2xl font-bold text-gray-900">
-            Quelles fonctionnalites sont importantes ?
+            Quelles fonctionnalités sont importantes ?
           </h2>
           <p className="mt-2 text-gray-600">
-            Selectionnez les fonctionnalites dont vous avez besoin.{' '}
+            Sélectionnez les fonctionnalités dont vous avez besoin.{' '}
             <span className="text-gray-400">(Facultatif — plusieurs choix possibles)</span>
           </p>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -405,11 +405,11 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
         <div>
           <h2 className="text-2xl font-bold text-gray-900">Contraintes techniques</h2>
           <p className="mt-2 text-gray-600">
-            Avez-vous des exigences sur l&apos;hebergement ou la conformite ?
+            Avez-vous des exigences sur l&apos;hébergement ou la conformité ?
           </p>
 
           <h3 className="mt-6 text-lg font-semibold text-gray-800">
-            Hebergement des donnees
+            Hébergement des données
           </h3>
           <div className="mt-3 grid gap-3 sm:grid-cols-3">
             {HOSTING_OPTIONS.map(({ value, label, desc }) => (
@@ -428,7 +428,7 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
             ))}
           </div>
 
-          <h3 className="mt-8 text-lg font-semibold text-gray-800">Conformite RGPD</h3>
+          <h3 className="mt-8 text-lg font-semibold text-gray-800">Conformité RGPD</h3>
           <button
             onClick={() => setAnswers({ ...answers, rgpd: !answers.rgpd })}
             className={`mt-3 flex w-full items-center gap-3 rounded-xl border-2 p-4 text-left transition ${
@@ -447,9 +447,9 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
               {answers.rgpd && <CheckIcon className="h-3.5 w-3.5" />}
             </span>
             <div>
-              <p className="font-semibold text-gray-900">Conformite RGPD obligatoire</p>
+              <p className="font-semibold text-gray-900">Conformité RGPD obligatoire</p>
               <p className="text-sm text-gray-500">
-                Seules les solutions conformes au RGPD seront recommandees
+                Seules les solutions conformes au RGPD seront recommandées
               </p>
             </div>
           </button>
@@ -464,10 +464,10 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
               ✅
             </span>
             <h2 className="mt-4 text-2xl font-bold text-gray-900">
-              Vos recommandations personnalisees
+              Vos recommandations personnalisées
             </h2>
             <p className="mt-2 text-gray-600">
-              Voici les {results.length} solutions les plus adaptees a vos besoins, classees par pertinence.
+              Voici les {results.length} solutions les plus adaptées à vos besoins, classées par pertinence.
             </p>
           </div>
 
@@ -543,7 +543,7 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
                       <div className="mt-4 flex items-center justify-between">
                         <span className="text-sm font-medium text-gray-700">
                           {product.pricing.startingPrice
-                            ? `A partir de ${product.pricing.startingPrice} ${product.pricing.currency}/mois`
+                            ? `À partir de ${product.pricing.startingPrice} ${product.pricing.currency}/mois`
                             : 'Sur devis'}
                         </span>
                         <Link
@@ -562,7 +562,7 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
 
           {/* Summary of answers */}
           <div className="mt-8 rounded-xl border border-gray-200 bg-gray-50 p-5">
-            <h3 className="font-semibold text-gray-800">Recapitulatif de vos criteres</h3>
+            <h3 className="font-semibold text-gray-800">Récapitulatif de vos critères</h3>
             <div className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
               <p>
                 <span className="text-gray-500">Profil :</span>{' '}
@@ -571,7 +571,7 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
                 </span>
               </p>
               <p>
-                <span className="text-gray-500">Equipe :</span>{' '}
+                <span className="text-gray-500">Équipe :</span>{' '}
                 <span className="font-medium">
                   {TEAM_SIZES.find((t) => t.value === answers.teamSize)?.label ?? '-'}
                 </span>
@@ -583,14 +583,14 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
                 </span>
               </p>
               <p>
-                <span className="text-gray-500">Hebergement :</span>{' '}
+                <span className="text-gray-500">Hébergement :</span>{' '}
                 <span className="font-medium">
                   {HOSTING_OPTIONS.find((h) => h.value === answers.hosting)?.label ?? '-'}
                 </span>
               </p>
               {answers.features.size > 0 && (
                 <p className="sm:col-span-2">
-                  <span className="text-gray-500">Fonctionnalites :</span>{' '}
+                  <span className="text-gray-500">Fonctionnalités :</span>{' '}
                   <span className="font-medium">
                     {Array.from(answers.features)
                       .map((f) => FEATURE_OPTIONS.find((o) => o.key === f)?.label)
@@ -611,7 +611,7 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
             onClick={prev}
             className="rounded-lg border border-gray-300 px-5 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
           >
-            Precedent
+            Précédent
           </button>
         ) : step === TOTAL_STEPS ? (
           <button

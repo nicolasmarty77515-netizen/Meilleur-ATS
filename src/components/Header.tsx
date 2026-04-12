@@ -33,7 +33,7 @@ export default function Header() {
           </li>
           <li>
             <Link href="/a-propos" className="transition hover:text-blue-700">
-              A propos
+              À propos
             </Link>
           </li>
         </ul>

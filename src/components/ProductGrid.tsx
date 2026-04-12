@@ -94,10 +94,10 @@ export default function ProductGrid({ products }: ProductGridProps) {
 
       <p className="mt-6 text-sm text-gray-600">
         {filtered.length === 0
-          ? 'Aucun logiciel ne correspond a vos criteres.'
+          ? 'Aucun logiciel ne correspond à vos critères.'
           : filtered.length === 1
-            ? '1 logiciel correspond a vos criteres.'
-            : `${filtered.length} logiciels correspondent a vos criteres.`}
+            ? '1 logiciel correspond à vos critères.'
+            : `${filtered.length} logiciels correspondent à vos critères.`}
       </p>
 
       <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -108,7 +108,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
 
       {filtered.length === 0 && (
         <p className="mt-10 text-center text-gray-500">
-          Essayez d&apos;elargir vos filtres pour voir plus de resultats.
+          Essayez d&apos;élargir vos filtres pour voir plus de résultats.
         </p>
       )}
     </>
