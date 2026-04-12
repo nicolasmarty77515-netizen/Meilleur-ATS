@@ -92,7 +92,15 @@
       "Bash(npx vercel:*)",
       "Bash(node -e \"console.log\\(process.cwd\\(\\)\\)\")",
       "Bash(node fix-accents.js)",
-      "Bash(ls -la \"C:/Users/nicol/Downloads/Meilleur-ATS/src/content/logiciels/\"*.mdx)"
+      "Bash(ls -la \"C:/Users/nicol/Downloads/Meilleur-ATS/src/content/logiciels/\"*.mdx)",
+      "Bash(ls src/content/logiciels/*.mdx)",
+      "Read(//c/Users/nicol/Downloads/Meilleur-ATS/{print \"/logiciels/**)",
+      "Bash(ls src/content/guides/*.mdx)",
+      "Read(//c/Users/nicol/Downloads/Meilleur-ATS/{print \"/guides/**)",
+      "Bash(ls src/content/comparatifs/*.mdx)",
+      "Bash(ls src/content/comparatifs/*nicoka*)",
+      "Bash(ls -1 \"C:/Users/nicol/Downloads/Meilleur-ATS/src/content/comparatifs/nicoka-vs-\"*)",
+      "Bash(ls -1 \"C:/Users/nicol/Downloads/Meilleur-ATS/src/content/comparatifs/nicoka-vs-\"*.mdx)"
     ]
   }
 }
