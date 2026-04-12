@@ -36,6 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.3,
     },
+    {
+      url: `${SITE_URL}/editeurs`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
   ];
 
   const profilePages: MetadataRoute.Sitemap = PROFILE_SLUGS.map((slug) => ({

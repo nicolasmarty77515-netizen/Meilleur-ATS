@@ -127,6 +127,9 @@ export const COUNTRY_CODES: Record<string, string> = {
   Canada: 'ca',
   Belgique: 'be',
   Suisse: 'ch',
+  Croatie: 'hr',
+  Luxembourg: 'lu',
+  Australie: 'au',
 };
 
 export const RATING_SOURCES = [

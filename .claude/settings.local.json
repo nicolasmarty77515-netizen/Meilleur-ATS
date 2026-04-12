@@ -91,7 +91,8 @@
       "Bash(\"/c/Program Files/GitHub CLI/gh.exe\" repo create Meilleur-ATS --public --source \"C:/Users/nicol/Downloads/Meilleur-ATS\" --remote origin --push)",
       "Bash(npx vercel:*)",
       "Bash(node -e \"console.log\\(process.cwd\\(\\)\\)\")",
-      "Bash(node fix-accents.js)"
+      "Bash(node fix-accents.js)",
+      "Bash(ls -la \"C:/Users/nicol/Downloads/Meilleur-ATS/src/content/logiciels/\"*.mdx)"
     ]
   }
 }

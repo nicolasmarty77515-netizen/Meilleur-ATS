@@ -36,6 +36,11 @@ export default function Footer() {
                   À propos
                 </Link>
               </li>
+              <li>
+                <Link href="/editeurs" className="text-gray-600 hover:text-blue-700">
+                  Éditeurs
+                </Link>
+              </li>
             </ul>
           </div>
 

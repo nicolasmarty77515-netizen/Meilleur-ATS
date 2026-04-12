@@ -48,6 +48,14 @@ export default function GlobalSearch() {
       url: '/questionnaire',
       extra: 'questionnaire quiz recommandation conseil accompagnement',
     },
+    // Éditeurs
+    {
+      type: 'guide' as const,
+      title: 'Éditeurs - Référencez votre logiciel ATS',
+      description: 'Référencez ou mettez à jour votre solution ATS sur Meilleur ATS.',
+      url: '/editeurs',
+      extra: 'éditeur référencement solution logiciel vendeur partenaire',
+    },
   ];
 
   return <SearchModal items={items} />;
