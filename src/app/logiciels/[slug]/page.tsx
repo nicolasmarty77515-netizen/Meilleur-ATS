@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getProductBySlug, getProductSlugs } from '@/lib/mdx';
+import { getProductBySlug, getProductSlugs, getAllProducts } from '@/lib/mdx';
 import { generateProductSchema, generateBreadcrumbSchema } from '@/lib/schema';
 import { FEATURE_LABELS, INTEGRATION_LABELS, PRICING_MODEL_LABELS, RATING_SOURCES, RATING_DISCLAIMER } from '@/lib/constants';
 import RatingStars from '@/components/RatingStars';
@@ -10,6 +10,7 @@ import CountryFlag from '@/components/CountryFlag';
 import RadarChart from '@/components/RadarChart';
 import { CheckIcon, XIcon } from '@/components/Icons';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import RandomSuggestions from '@/components/RandomSuggestions';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -547,6 +548,19 @@ export default async function ProductPage({ params }: PageProps) {
               Visiter le site officiel
             </a>
           </div>
+
+          {/* Random suggestions */}
+          <RandomSuggestions
+            products={getAllProducts().map((p) => ({
+              name: p.name,
+              slug: p.slug,
+              description: p.description,
+              headquarter: p.headquarter,
+              ratings: { overall: p.ratings.overall },
+              pricing: { startingPrice: p.pricing.startingPrice, currency: p.pricing.currency },
+            }))}
+            excludeSlugs={[slug]}
+          />
 
           <p className="mt-8 text-sm text-gray-400">
             Dernière mise à jour : {product.updatedAt}

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { getGuideBySlug, getGuideSlugs, getAllGuides } from '@/lib/mdx';
+import { getGuideBySlug, getGuideSlugs, getAllGuides, getAllProducts } from '@/lib/mdx';
 import { generateBreadcrumbSchema } from '@/lib/schema';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import RandomSuggestions from '@/components/RandomSuggestions';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -117,6 +118,18 @@ export default async function GuidePage({ params }: PageProps) {
               Voir tous les logiciels ATS
             </Link>
           </div>
+
+          {/* Random suggestions */}
+          <RandomSuggestions
+            products={getAllProducts().map((p) => ({
+              name: p.name,
+              slug: p.slug,
+              description: p.description,
+              headquarter: p.headquarter,
+              ratings: { overall: p.ratings.overall },
+              pricing: { startingPrice: p.pricing.startingPrice, currency: p.pricing.currency },
+            }))}
+          />
 
           {/* Other guides */}
           {allGuides.length > 0 && (

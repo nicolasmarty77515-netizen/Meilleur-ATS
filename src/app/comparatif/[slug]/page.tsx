@@ -5,9 +5,11 @@ import {
   getComparativeBySlug,
   getComparativeSlugs,
   getProductBySlug,
+  getAllProducts,
 } from '@/lib/mdx';
 import { generateComparisonSchema, generateBreadcrumbSchema } from '@/lib/schema';
 import { FEATURE_LABELS } from '@/lib/constants';
+import RandomSuggestions from '@/components/RandomSuggestions';
 import RatingStars from '@/components/RatingStars';
 import RadarChart from '@/components/RadarChart';
 import CountryFlag from '@/components/CountryFlag';
@@ -269,6 +271,19 @@ export default async function ComparatifPage({ params }: PageProps) {
               <p className="font-semibold text-gray-900">Voir la fiche {productB.name}</p>
             </Link>
           </div>
+
+          {/* Random suggestions */}
+          <RandomSuggestions
+            products={getAllProducts().map((p) => ({
+              name: p.name,
+              slug: p.slug,
+              description: p.description,
+              headquarter: p.headquarter,
+              ratings: { overall: p.ratings.overall },
+              pricing: { startingPrice: p.pricing.startingPrice, currency: p.pricing.currency },
+            }))}
+            excludeSlugs={[productA.slug, productB.slug]}
+          />
         </div>
       </article>
     </>
