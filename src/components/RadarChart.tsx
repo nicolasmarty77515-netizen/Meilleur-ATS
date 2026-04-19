@@ -86,6 +86,8 @@ export default function RadarChart({ dimensions, datasets, minBranches = 3 }: Ra
             <button
               key={dim.key}
               onClick={() => toggleDimension(dim.key)}
+              aria-pressed={active}
+              aria-label={`${dim.label} : ${active ? 'affiché' : 'masqué'}`}
               className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                 active
                   ? 'bg-blue-100 text-blue-800 ring-1 ring-blue-300'
@@ -114,7 +116,19 @@ export default function RadarChart({ dimensions, datasets, minBranches = 3 }: Ra
 
       {/* Radar SVG */}
       <div className="flex justify-center">
-        <svg viewBox={`0 0 ${size} ${size}`} className="h-72 w-72 sm:h-96 sm:w-96">
+        <svg
+          viewBox={`0 0 ${size} ${size}`}
+          className="h-72 w-72 sm:h-96 sm:w-96"
+          role="img"
+          aria-label={`Graphique radar comparant ${datasets.map((ds) => ds.label).join(' et ')} sur ${visibleDimensions.length} critères`}
+        >
+          <title>Comparaison visuelle des notes</title>
+          <desc>
+            {datasets.map((ds) => {
+              const scores = visibleDimensions.map((dim) => `${dim.label}: ${ds.values[dim.key] ?? 0}/5`).join(', ');
+              return `${ds.label} — ${scores}`;
+            }).join('. ')}
+          </desc>
           {/* Grid levels */}
           {POLYGON_LEVELS.map((level) => (
             <polygon
@@ -231,18 +245,42 @@ export default function RadarChart({ dimensions, datasets, minBranches = 3 }: Ra
 
       {/* Legend */}
       {datasets.length > 1 && (
-        <div className="flex justify-center gap-6">
+        <div className="flex justify-center gap-6" aria-label="Légende du graphique">
           {datasets.map((ds, i) => (
             <div key={i} className="flex items-center gap-2">
               <span
                 className="inline-block h-3 w-3 rounded-full"
                 style={{ backgroundColor: ds.color }}
+                aria-hidden="true"
               />
               <span className="text-sm font-medium text-gray-700">{ds.label}</span>
             </div>
           ))}
         </div>
       )}
+
+      {/* Accessible data table (sr-only) */}
+      <table className="sr-only">
+        <caption>Données du graphique radar</caption>
+        <thead>
+          <tr>
+            <th scope="col">Critère</th>
+            {datasets.map((ds, i) => (
+              <th key={i} scope="col">{ds.label}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {visibleDimensions.map((dim) => (
+            <tr key={dim.key}>
+              <th scope="row">{dim.label}</th>
+              {datasets.map((ds, i) => (
+                <td key={i}>{ds.values[dim.key] ?? 0} / {dim.max}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

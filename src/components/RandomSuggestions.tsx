@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { useState, useEffect, useRef } from 'react';
+import Link from '@/components/LocaleLink';
 import ProductLogo from './ProductLogo';
 import CountryFlag from './CountryFlag';
 import RatingStars from './RatingStars';
@@ -27,8 +27,11 @@ export default function RandomSuggestions({
   count = 2,
 }: RandomSuggestionsProps) {
   const [picks, setPicks] = useState<SuggestionProduct[]>([]);
+  const initialized = useRef(false);
 
   useEffect(() => {
+    if (initialized.current) return;
+    initialized.current = true;
     const available = products.filter((p) => !excludeSlugs.includes(p.slug));
     const shuffled = [...available].sort(() => Math.random() - 0.5);
     setPicks(shuffled.slice(0, count));

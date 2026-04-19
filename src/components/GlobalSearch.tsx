@@ -56,6 +56,62 @@ export default function GlobalSearch() {
       url: '/editeurs',
       extra: 'éditeur référencement solution logiciel vendeur partenaire',
     },
+    // Accompagnement
+    {
+      type: 'guide' as const,
+      title: 'Accompagnement au choix d\u2019un ATS',
+      description: 'Cabinets de conseil, agences et intégrateurs pour vous aider à choisir votre ATS.',
+      url: '/accompagnement',
+      extra: 'accompagnement conseil agence cabinet AMOA SIRH aide choix intégrateur',
+    },
+    // Comparateur
+    {
+      type: 'comparatif' as const,
+      title: 'Comparateur ATS interactif',
+      description: 'Comparez jusqu\u2019à 3 logiciels de recrutement côte à côte.',
+      url: '/comparer',
+      extra: 'comparateur comparer interactif côte à côte',
+    },
+    // Glossaire
+    {
+      type: 'guide' as const,
+      title: 'Glossaire du recrutement',
+      description: 'Définitions des termes clés du recrutement et des logiciels ATS.',
+      url: '/glossaire',
+      extra: 'glossaire définition lexique termes vocabulaire',
+    },
+    // Études
+    {
+      type: 'guide' as const,
+      title: 'Études & Statistiques du marché ATS',
+      description: 'Chiffres clés du marché des logiciels ATS et du recrutement en France.',
+      url: '/etudes',
+      extra: 'statistiques chiffres études marché données',
+    },
+    // Changelog
+    {
+      type: 'guide' as const,
+      title: 'Actualités des logiciels ATS',
+      description: 'Dernières mises à jour, nouvelles fonctionnalités et changements de prix.',
+      url: '/changelog',
+      extra: 'actualités mises à jour changelog nouveautés',
+    },
+    // Contact
+    {
+      type: 'guide' as const,
+      title: 'Contact',
+      description: 'Contactez l\u2019équipe Meilleur ATS.',
+      url: '/contact',
+      extra: 'contact email message formulaire',
+    },
+    // Favoris
+    {
+      type: 'guide' as const,
+      title: 'Mes ATS favoris',
+      description: 'Retrouvez les logiciels de recrutement que vous avez sauvegardés.',
+      url: '/favoris',
+      extra: 'favoris sauvegardés sélection liste',
+    },
   ];
 
   return <SearchModal items={items} />;

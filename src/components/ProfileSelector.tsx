@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import { PROFILES } from '@/lib/constants';
 import type { ProfileSlug } from '@/lib/types';
 

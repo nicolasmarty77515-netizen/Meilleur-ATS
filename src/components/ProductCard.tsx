@@ -1,9 +1,10 @@
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import type { ProductFrontmatter } from '@/lib/types';
 import { PRICING_MODEL_LABELS } from '@/lib/constants';
 import RatingStars from './RatingStars';
 import ProductLogo from './ProductLogo';
 import CountryFlag from './CountryFlag';
+import FavoritesButton from './FavoritesButton';
 
 interface ProductCardProps {
   product: ProductFrontmatter;
@@ -15,13 +16,14 @@ export default function ProductCard({ product }: ProductCardProps) {
     : PRICING_MODEL_LABELS[product.pricing.model] ?? 'Sur devis';
 
   return (
-    <Link
-      href={`/logiciels/${product.slug}`}
-      className="group block rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-blue-300 hover:shadow-md"
-    >
+    <div className="group relative rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition hover:border-blue-300 hover:shadow-md">
+      <div className="absolute right-3 top-3 z-10">
+        <FavoritesButton slug={product.slug} name={product.name} size="sm" />
+      </div>
+      <Link href={`/logiciels/${product.slug}`} className="block">
       <div className="flex items-start gap-4">
         <ProductLogo name={product.name} slug={product.slug} size="md" />
-        <div className="min-w-0 flex-1">
+        <div className="min-w-0 flex-1 pr-6">
           <h3 className="flex items-center gap-1.5 text-lg font-semibold text-gray-900 group-hover:text-blue-700">
             <CountryFlag country={product.headquarter} size="sm" />
             {product.name}
@@ -79,6 +81,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           </span>
         )}
       </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

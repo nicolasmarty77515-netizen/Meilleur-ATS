@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import Link from 'next/link';
+import Link from '@/components/LocaleLink';
 import type { ProductFrontmatter } from '@/lib/types';
 import RatingStars from './RatingStars';
 import ProductLogo from './ProductLogo';
@@ -268,50 +268,56 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
 
       {/* Step 1: Profile */}
       {step === 1 && (
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900">Quel est votre profil ?</h2>
+        <fieldset>
+          <legend className="text-2xl font-bold text-gray-900">Quel est votre profil ?</legend>
           <p className="mt-2 text-gray-600">
             Sélectionnez le profil qui correspond le mieux à votre activité.
           </p>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <div className="mt-6 grid gap-3 sm:grid-cols-2" role="radiogroup" aria-label="Profil de recruteur">
             {PROFILES.map(({ key, label, icon, desc }) => (
               <button
                 key={key}
                 onClick={() => setAnswers({ ...answers, profile: key })}
+                role="radio"
+                aria-checked={answers.profile === key}
+                aria-label={`${label} — ${desc}`}
                 className={`flex items-start gap-3 rounded-xl border-2 p-4 text-left transition ${
                   answers.profile === key
                     ? 'border-blue-600 bg-blue-50 ring-1 ring-blue-200'
                     : 'border-gray-200 bg-white hover:border-gray-300'
                 }`}
               >
-                <span className="mt-0.5 text-2xl">{icon}</span>
+                <span className="mt-0.5 text-2xl" aria-hidden="true">{icon}</span>
                 <div>
                   <p className="font-semibold text-gray-900">{label}</p>
                   <p className="text-sm text-gray-500">{desc}</p>
                 </div>
                 {answers.profile === key && (
-                  <span className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white">
+                  <span className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white" aria-hidden="true">
                     <CheckIcon className="h-4 w-4" />
                   </span>
                 )}
               </button>
             ))}
           </div>
-        </div>
+        </fieldset>
       )}
 
       {/* Step 2: Team size */}
       {step === 2 && (
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900">Quelle est la taille de votre équipe ?</h2>
+        <fieldset>
+          <legend className="text-2xl font-bold text-gray-900">Quelle est la taille de votre équipe ?</legend>
           <p className="mt-2 text-gray-600">
             Combien de personnes utiliseront l&apos;outil au quotidien ?
           </p>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <div className="mt-6 grid gap-3 sm:grid-cols-2" role="radiogroup" aria-label="Taille d'équipe">
             {TEAM_SIZES.map(({ value, label, desc }) => (
               <button
                 key={value}
                 onClick={() => setAnswers({ ...answers, teamSize: value })}
+                role="radio"
+                aria-checked={answers.teamSize === value}
+                aria-label={`${label} — ${desc}`}
                 className={`rounded-xl border-2 p-4 text-left transition ${
                   answers.teamSize === value
                     ? 'border-blue-600 bg-blue-50 ring-1 ring-blue-200'
@@ -323,21 +329,24 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
               </button>
             ))}
           </div>
-        </div>
+        </fieldset>
       )}
 
       {/* Step 3: Budget */}
       {step === 3 && (
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900">Quel est votre budget mensuel ?</h2>
+        <fieldset>
+          <legend className="text-2xl font-bold text-gray-900">Quel est votre budget mensuel ?</legend>
           <p className="mt-2 text-gray-600">
             Indiquez votre fourchette de budget pour un logiciel de recrutement.
           </p>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <div className="mt-6 grid gap-3 sm:grid-cols-2" role="radiogroup" aria-label="Budget mensuel">
             {BUDGETS.map(({ value, label, desc }) => (
               <button
                 key={value}
                 onClick={() => setAnswers({ ...answers, budget: value })}
+                role="radio"
+                aria-checked={answers.budget === value}
+                aria-label={`${label} — ${desc}`}
                 className={`rounded-xl border-2 p-4 text-left transition ${
                   answers.budget === value
                     ? 'border-blue-600 bg-blue-50 ring-1 ring-blue-200'
@@ -349,20 +358,20 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
               </button>
             ))}
           </div>
-        </div>
+        </fieldset>
       )}
 
       {/* Step 4: Features */}
       {step === 4 && (
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900">
+        <fieldset>
+          <legend className="text-2xl font-bold text-gray-900">
             Quelles fonctionnalités sont importantes ?
-          </h2>
+          </legend>
           <p className="mt-2 text-gray-600">
             Sélectionnez les fonctionnalités dont vous avez besoin.{' '}
             <span className="text-gray-400">(Facultatif — plusieurs choix possibles)</span>
           </p>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <div className="mt-6 grid gap-3 sm:grid-cols-2" role="group" aria-label="Fonctionnalités souhaitées">
             {FEATURE_OPTIONS.map(({ key, label, desc }) => {
               const selected = answers.features.has(key);
               return (
@@ -374,6 +383,9 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
                     else next.add(key);
                     setAnswers({ ...answers, features: next });
                   }}
+                  role="checkbox"
+                  aria-checked={selected}
+                  aria-label={`${label} — ${desc}`}
                   className={`flex items-start gap-3 rounded-xl border-2 p-4 text-left transition ${
                     selected
                       ? 'border-blue-600 bg-blue-50 ring-1 ring-blue-200'
@@ -386,6 +398,7 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
                         ? 'border-blue-600 bg-blue-600 text-white'
                         : 'border-gray-300 bg-white'
                     }`}
+                    aria-hidden="true"
                   >
                     {selected && <CheckIcon className="h-3.5 w-3.5" />}
                   </span>
@@ -397,13 +410,13 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
               );
             })}
           </div>
-        </div>
+        </fieldset>
       )}
 
       {/* Step 5: Hosting & RGPD */}
       {step === 5 && (
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900">Contraintes techniques</h2>
+        <fieldset>
+          <legend className="text-2xl font-bold text-gray-900">Contraintes techniques</legend>
           <p className="mt-2 text-gray-600">
             Avez-vous des exigences sur l&apos;hébergement ou la conformité ?
           </p>
@@ -411,11 +424,14 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
           <h3 className="mt-6 text-lg font-semibold text-gray-800">
             Hébergement des données
           </h3>
-          <div className="mt-3 grid gap-3 sm:grid-cols-3">
+          <div className="mt-3 grid gap-3 sm:grid-cols-3" role="radiogroup" aria-label="Hébergement des données">
             {HOSTING_OPTIONS.map(({ value, label, desc }) => (
               <button
                 key={value}
                 onClick={() => setAnswers({ ...answers, hosting: value })}
+                role="radio"
+                aria-checked={answers.hosting === value}
+                aria-label={`${label} — ${desc}`}
                 className={`rounded-xl border-2 p-4 text-left transition ${
                   answers.hosting === value
                     ? 'border-blue-600 bg-blue-50 ring-1 ring-blue-200'
@@ -453,7 +469,7 @@ export default function Questionnaire({ products }: QuestionnaireProps) {
               </p>
             </div>
           </button>
-        </div>
+        </fieldset>
       )}
 
       {/* Step 6: Results */}
