@@ -1,5 +1,5 @@
 import Link from '@/components/LocaleLink';
-import { getAllProducts } from '@/lib/mdx';
+import { getVisibleProducts } from '@/lib/mdx';
 import ProfileSelector from '@/components/ProfileSelector';
 import HomeShowcase from '@/components/HomeShowcase';
 import FAQ from '@/components/FAQ';
@@ -90,7 +90,7 @@ const homeFAQ = [
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const dict = await getDictionary(locale as Locale);
-  const allProducts = getAllProducts();
+  const allProducts = getVisibleProducts();
 
   return (
     <>

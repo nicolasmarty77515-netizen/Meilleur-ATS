@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from '@/components/LocaleLink';
-import { getProductBySlug, getProductSlugs, getAllProducts } from '@/lib/mdx';
+import { getProductBySlug, getProductSlugs, getVisibleProducts } from '@/lib/mdx';
 import { generateProductSchema, generateBreadcrumbSchema } from '@/lib/schema';
 import { FEATURE_LABELS, INTEGRATION_LABELS, PRICING_MODEL_LABELS, RATING_SOURCES, RATING_DISCLAIMER, getIndexableMetadata } from '@/lib/constants';
 import RatingStars from '@/components/RatingStars';
@@ -569,7 +569,7 @@ export default async function ProductPage({ params }: PageProps) {
 
           {/* Random suggestions */}
           <RandomSuggestions
-            products={getAllProducts().map((p) => ({
+            products={getVisibleProducts().map((p) => ({
               name: p.name,
               slug: p.slug,
               description: p.description,

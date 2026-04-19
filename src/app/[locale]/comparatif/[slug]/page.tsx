@@ -5,7 +5,7 @@ import {
   getComparativeBySlug,
   getComparativeSlugs,
   getProductBySlug,
-  getAllProducts,
+  getVisibleProducts,
 } from '@/lib/mdx';
 import { generateComparisonSchema, generateBreadcrumbSchema } from '@/lib/schema';
 import { FEATURE_LABELS, getIndexableMetadata } from '@/lib/constants';
@@ -285,7 +285,7 @@ export default async function ComparatifPage({ params }: PageProps) {
 
           {/* Random suggestions */}
           <RandomSuggestions
-            products={getAllProducts().map((p) => ({
+            products={getVisibleProducts().map((p) => ({
               name: p.name,
               slug: p.slug,
               description: p.description,

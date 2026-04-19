@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getAllProducts } from '@/lib/mdx';
+import { getVisibleProducts } from '@/lib/mdx';
 import { generateProductListSchema } from '@/lib/schema';
 import ProductGrid from '@/components/ProductGrid';
 import SchemaMarkup from '@/components/SchemaMarkup';
@@ -21,7 +21,7 @@ interface PageProps {
 export default async function LogicielsPage({ params }: PageProps) {
   const { locale } = await params;
   const dict = await getDictionary(locale as Locale);
-  const products = getAllProducts().sort((a, b) => b.ratings.overall - a.ratings.overall);
+  const products = getVisibleProducts().sort((a, b) => b.ratings.overall - a.ratings.overall);
 
   const schema = generateProductListSchema(
     products,

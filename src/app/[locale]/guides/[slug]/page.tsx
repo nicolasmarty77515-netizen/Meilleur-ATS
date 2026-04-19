@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from '@/components/LocaleLink';
-import { getGuideBySlug, getGuideSlugs, getAllGuides, getAllProducts } from '@/lib/mdx';
+import { getGuideBySlug, getGuideSlugs, getVisibleGuides, getVisibleProducts } from '@/lib/mdx';
 import { generateBreadcrumbSchema } from '@/lib/schema';
 import { getIndexableMetadata } from '@/lib/constants';
 import SchemaMarkup from '@/components/SchemaMarkup';
@@ -37,7 +37,7 @@ export default async function GuidePage({ params }: PageProps) {
   const guide = getGuideBySlug(slug);
   if (!guide) notFound();
 
-  const allGuides = getAllGuides().filter((g) => g.slug !== slug);
+  const allGuides = getVisibleGuides().filter((g) => g.slug !== slug);
 
   const breadcrumb = generateBreadcrumbSchema([
     { name: dict.common.home, url: '/' },
@@ -128,7 +128,7 @@ export default async function GuidePage({ params }: PageProps) {
 
           {/* Random suggestions */}
           <RandomSuggestions
-            products={getAllProducts().map((p) => ({
+            products={getVisibleProducts().map((p) => ({
               name: p.name,
               slug: p.slug,
               description: p.description,

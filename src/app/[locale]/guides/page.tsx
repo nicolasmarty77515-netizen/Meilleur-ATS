@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from '@/components/LocaleLink';
-import { getAllGuides } from '@/lib/mdx';
+import { getVisibleGuides } from '@/lib/mdx';
 import { getDictionary, type Locale } from '@/lib/i18n';
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ interface PageProps {
 export default async function GuidesPage({ params }: PageProps) {
   const { locale } = await params;
   const dict = await getDictionary(locale as Locale);
-  const guides = getAllGuides();
+  const guides = getVisibleGuides();
 
   return (
     <section className="py-12">

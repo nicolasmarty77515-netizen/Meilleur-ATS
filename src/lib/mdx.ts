@@ -8,6 +8,7 @@ import type {
   ComparativeFrontmatter,
   ProfileSlug,
 } from './types';
+import { isIndexable } from './constants';
 
 const contentDir = path.join(process.cwd(), 'src', 'content');
 
@@ -54,6 +55,15 @@ export function getProductSlugs(): string[] {
     .readdirSync(dir)
     .filter((f) => f.endsWith('.mdx'))
     .map((f) => f.replace('.mdx', ''));
+}
+
+/**
+ * Renvoie uniquement les produits "publiés" (phase courante).
+ * À utiliser pour les listings et suggestions.
+ * Les fiches individuelles continuent à rendre via getProductBySlug.
+ */
+export function getVisibleProducts(): (ProductFrontmatter & { content: string })[] {
+  return getAllProducts().filter((p) => isIndexable('product', p.slug));
 }
 
 export function getProductsForProfile(
@@ -108,6 +118,11 @@ export function getAllGuides(): (GuideFrontmatter & { content: string })[] {
     .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }
 
+/** Renvoie uniquement les guides "publiés" (phase courante). */
+export function getVisibleGuides(): (GuideFrontmatter & { content: string })[] {
+  return getAllGuides().filter((g) => isIndexable('guide', g.slug));
+}
+
 export function getGuideBySlug(slug: string): (GuideFrontmatter & { content: string }) | null {
   const filePath = path.join(contentDir, 'guides', `${slug}.mdx`);
   if (!fs.existsSync(filePath)) return null;
@@ -132,6 +147,11 @@ export function getAllComparatives(): (ComparativeFrontmatter & { content: strin
     ...frontmatter,
     content,
   }));
+}
+
+/** Renvoie uniquement les comparatifs "publiés" (phase courante). */
+export function getVisibleComparatives(): (ComparativeFrontmatter & { content: string })[] {
+  return getAllComparatives().filter((c) => isIndexable('versus', c.slug));
 }
 
 export function getComparativeBySlug(
