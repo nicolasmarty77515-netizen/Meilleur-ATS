@@ -8,12 +8,22 @@ export const SITE_DESCRIPTION =
 // ---------------------------------------------------------------------------
 // Publication phases (progressive SEO launch)
 // ---------------------------------------------------------------------------
-// Phase 1 = "vitrine" : ~30 pages (homepage + 10 ATS phares + 5 guides + pages info)
-// Phase 2 = "expansion" : + tous les ATS + profils + comparatifs principaux
-// Phase 3 = "profondeur" : tout (406 pages)
+// Phase 1 = "vitrine"      : ~30 pages (homepage + 10 ATS phares + 5 guides + pages info)
+// Phase 2 = "expansion"    : + tous les ATS + profils + comparatifs principaux
+// Phase 3 = "profondeur"   : tout (406 pages)
 //
 // Pages hors phase => rendues mais en <meta robots="noindex"> et exclues du sitemap.
 // Change la valeur + push => Vercel redéploie en ~90s.
+//
+// 📅 CALENDRIER DE LANCEMENT
+//   🚀 Phase 1 : 19 avril 2026 (lancement sur meilleur-ats.com)
+//   ⏰ Phase 2 : ~10 mai 2026   (J+21 — un agent Claude programmé te le rappellera)
+//   ⏰ Phase 3 : ~15 juin 2026  (J+57 — un agent Claude programmé te le rappellera)
+//
+// Critères "feu vert" avant de passer à la phase suivante :
+//   - Les pages de la phase courante sont indexées par Google (vérif via Search Console)
+//   - Pas d'erreurs crawl / sitemap dans GSC
+//   - Au moins 3-5 backlinks naturels pointent déjà vers le site
 // ---------------------------------------------------------------------------
 export type PublicationPhase = 1 | 2 | 3;
 export const PUBLICATION_PHASE: PublicationPhase = 1;

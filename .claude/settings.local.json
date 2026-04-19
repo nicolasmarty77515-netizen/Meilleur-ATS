@@ -145,7 +145,8 @@
       "mcp__31d0cd42-fb57-4711-ba72-aaab865aeda8__web_fetch_vercel_url",
       "Bash(curl -sI -L --max-time 15 https://meilleur-ats.com/)",
       "Bash(curl -sI -L --max-time 15 https://www.meilleur-ats.com/)",
-      "Bash(node scripts/distribute-dates.mjs)"
+      "Bash(node scripts/distribute-dates.mjs)",
+      "mcp__scheduled-tasks__create_scheduled_task"
     ]
   }
 }
