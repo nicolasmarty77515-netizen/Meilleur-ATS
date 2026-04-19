@@ -142,7 +142,10 @@
       "Bash(curl -sI http://127.0.0.1:8787/favicon.ico)",
       "mcp__31d0cd42-fb57-4711-ba72-aaab865aeda8__list_deployments",
       "mcp__31d0cd42-fb57-4711-ba72-aaab865aeda8__get_project",
-      "mcp__31d0cd42-fb57-4711-ba72-aaab865aeda8__web_fetch_vercel_url"
+      "mcp__31d0cd42-fb57-4711-ba72-aaab865aeda8__web_fetch_vercel_url",
+      "Bash(curl -sI -L --max-time 15 https://meilleur-ats.com/)",
+      "Bash(curl -sI -L --max-time 15 https://www.meilleur-ats.com/)",
+      "Bash(node scripts/distribute-dates.mjs)"
     ]
   }
 }
