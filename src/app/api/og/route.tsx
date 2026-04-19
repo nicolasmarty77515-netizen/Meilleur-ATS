@@ -116,7 +116,7 @@ export async function GET(request: NextRequest) {
           }}
         >
           <div style={{ color: '#60a5fa', fontSize: '18px' }}>
-            meilleur-ats.fr
+            meilleur-ats.com
           </div>
           {rating && (
             <div

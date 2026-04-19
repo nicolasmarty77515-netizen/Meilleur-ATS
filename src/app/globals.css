@@ -289,7 +289,7 @@ html.dark input[type="range"] {
   }
 
   a[href^="/"]::after {
-    content: " (meilleur-ats.fr" attr(href) ")";
+    content: " (meilleur-ats.com" attr(href) ")";
   }
 
   a[href^="#"]::after,
@@ -308,7 +308,7 @@ html.dark input[type="range"] {
 
   /* Print header */
   main::before {
-    content: "Meilleur ATS — meilleur-ats.fr";
+    content: "Meilleur ATS — meilleur-ats.com";
     display: block;
     text-align: center;
     font-size: 10pt;

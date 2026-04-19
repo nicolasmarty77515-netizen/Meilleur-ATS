@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from '@/components/LocaleLink';
 import { getGuideBySlug, getGuideSlugs, getAllGuides, getAllProducts } from '@/lib/mdx';
 import { generateBreadcrumbSchema } from '@/lib/schema';
+import { getIndexableMetadata } from '@/lib/constants';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import RandomSuggestions from '@/components/RandomSuggestions';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -26,6 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: guide.description,
     alternates: { canonical: `/guides/${slug}` },
     keywords: guide.keywords,
+    ...getIndexableMetadata('guide', slug),
   };
 }
 

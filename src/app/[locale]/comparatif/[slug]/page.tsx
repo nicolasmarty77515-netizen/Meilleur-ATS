@@ -8,7 +8,7 @@ import {
   getAllProducts,
 } from '@/lib/mdx';
 import { generateComparisonSchema, generateBreadcrumbSchema } from '@/lib/schema';
-import { FEATURE_LABELS } from '@/lib/constants';
+import { FEATURE_LABELS, getIndexableMetadata } from '@/lib/constants';
 import { getDictionary, type Locale } from '@/lib/i18n';
 import RandomSuggestions from '@/components/RandomSuggestions';
 import RatingStars from '@/components/RatingStars';
@@ -36,6 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: comp.title,
     description: comp.description,
     alternates: { canonical: `/comparatif/${slug}` },
+    ...getIndexableMetadata('versus', slug),
   };
 }
 

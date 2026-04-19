@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { SITE_URL, PROFILE_SLUGS } from '@/lib/constants';
+import { SITE_URL, PROFILE_SLUGS, isIndexable } from '@/lib/constants';
 import { getProductSlugs, getGuideSlugs, getComparativeSlugs } from '@/lib/mdx';
 
 const LOCALES = ['fr', 'en'] as const;
@@ -48,23 +48,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
   addPage('/a-propos', { freq: 'monthly', priority: 0.3 });
   addPage('/contact', { freq: 'monthly', priority: 0.4 });
 
-  // Profile pages
+  // Profile pages (seulement si la phase les autorise)
   for (const slug of PROFILE_SLUGS) {
+    if (!isIndexable('profile', slug)) continue;
     addPage(`/profils/${slug}`, { freq: 'weekly', priority: 0.8 });
   }
 
-  // Product pages
+  // Product pages (filtrées par phase)
   for (const slug of getProductSlugs()) {
+    if (!isIndexable('product', slug)) continue;
     addPage(`/logiciels/${slug}`, { freq: 'monthly', priority: 0.8 });
   }
 
-  // Guide pages
+  // Guide pages (filtrées par phase)
   for (const slug of getGuideSlugs()) {
+    if (!isIndexable('guide', slug)) continue;
     addPage(`/guides/${slug}`, { freq: 'monthly', priority: 0.6 });
   }
 
-  // Comparative pages
+  // Comparative pages (uniquement phase 3)
   for (const slug of getComparativeSlugs()) {
+    if (!isIndexable('versus', slug)) continue;
     addPage(`/comparatif/${slug}`, { freq: 'monthly', priority: 0.7 });
   }
 

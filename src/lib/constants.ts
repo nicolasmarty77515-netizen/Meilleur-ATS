@@ -1,9 +1,75 @@
 import type { ProfileSlug } from './types';
 
 export const SITE_NAME = 'Meilleur ATS';
-export const SITE_URL = 'https://meilleur-ats.fr';
+export const SITE_URL = 'https://meilleur-ats.com';
 export const SITE_DESCRIPTION =
   'Comparatif indépendant des meilleurs logiciels de recrutement (ATS) en France. Trouvez la solution adaptée à votre profil : cabinet, indépendant, RH, intérim.';
+
+// ---------------------------------------------------------------------------
+// Publication phases (progressive SEO launch)
+// ---------------------------------------------------------------------------
+// Phase 1 = "vitrine" : ~30 pages (homepage + 10 ATS phares + 5 guides + pages info)
+// Phase 2 = "expansion" : + tous les ATS + profils + comparatifs principaux
+// Phase 3 = "profondeur" : tout (406 pages)
+//
+// Pages hors phase => rendues mais en <meta robots="noindex"> et exclues du sitemap.
+// Change la valeur + push => Vercel redéploie en ~90s.
+// ---------------------------------------------------------------------------
+export type PublicationPhase = 1 | 2 | 3;
+export const PUBLICATION_PHASE: PublicationPhase = 1;
+
+/** Slugs ATS publiés en phase 1 (têtes de gondole). */
+export const PHASE_1_PRODUCT_SLUGS = new Set<string>([
+  'nicoka',
+  'ashby',
+  'greenhouse',
+  'lever',
+  'workable',
+  'recruitee',
+  'teamtailor',
+  'softgarden',
+  'jobaffinity',
+  'cegid-talent',
+]);
+
+/** Slugs guides publiés en phase 1. */
+export const PHASE_1_GUIDE_SLUGS = new Set<string>([
+  'comment-choisir-ats',
+  'ats-cabinet-recrutement',
+  'ats-recruteur-independant',
+  'meilleur-ats-ia',
+  'multiposting-guide',
+]);
+
+export type IndexableType = 'home' | 'page' | 'product' | 'guide' | 'versus' | 'profile';
+
+/** True si la page doit être indexée par Google en fonction de PUBLICATION_PHASE. */
+export function isIndexable(type: IndexableType, slug?: string): boolean {
+  // Pages statiques info : toujours indexées
+  if (type === 'home' || type === 'page') return true;
+  // Phase 3 : tout indexé
+  if (PUBLICATION_PHASE >= 3) return true;
+
+  if (type === 'product') {
+    if (PUBLICATION_PHASE >= 2) return true;
+    return slug ? PHASE_1_PRODUCT_SLUGS.has(slug) : false;
+  }
+  if (type === 'guide') {
+    if (PUBLICATION_PHASE >= 2) return true;
+    return slug ? PHASE_1_GUIDE_SLUGS.has(slug) : false;
+  }
+  if (type === 'profile') return PUBLICATION_PHASE >= 2;
+  if (type === 'versus') return PUBLICATION_PHASE >= 3;
+
+  return false;
+}
+
+/** Metadata helper : retourne { robots: { index: false } } quand la page n'est pas encore publiée. */
+export function getIndexableMetadata(type: IndexableType, slug?: string) {
+  return isIndexable(type, slug)
+    ? undefined
+    : { robots: { index: false, follow: true } };
+}
 
 export const PROFILES: Record<
   ProfileSlug,

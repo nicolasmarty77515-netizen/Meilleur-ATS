@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from '@/components/LocaleLink';
 import { getProductBySlug, getProductSlugs, getAllProducts } from '@/lib/mdx';
 import { generateProductSchema, generateBreadcrumbSchema } from '@/lib/schema';
-import { FEATURE_LABELS, INTEGRATION_LABELS, PRICING_MODEL_LABELS, RATING_SOURCES, RATING_DISCLAIMER } from '@/lib/constants';
+import { FEATURE_LABELS, INTEGRATION_LABELS, PRICING_MODEL_LABELS, RATING_SOURCES, RATING_DISCLAIMER, getIndexableMetadata } from '@/lib/constants';
 import RatingStars from '@/components/RatingStars';
 import ProductLogo from '@/components/ProductLogo';
 import CountryFlag from '@/components/CountryFlag';
@@ -34,6 +34,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${product.name} - Avis et test complet`,
     description: `Test et avis complet de ${product.name}. Note : ${product.ratings.overall}/5. ${product.description}`,
     alternates: { canonical: `/logiciels/${slug}` },
+    ...getIndexableMetadata('product', slug),
   };
 }
 

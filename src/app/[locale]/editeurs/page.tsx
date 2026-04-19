@@ -40,7 +40,7 @@ const faqItems = [
   {
     question: 'Comment contester une information erronée sur notre fiche ?',
     answer:
-      'Si vous constatez une erreur factuelle (tarif obsolète, fonctionnalité manquante, etc.), envoyez-nous un e-mail à contact@meilleur-ats.fr avec les corrections et les justificatifs. Nous mettons à jour la fiche dans les meilleurs délais.',
+      'Si vous constatez une erreur factuelle (tarif obsolète, fonctionnalité manquante, etc.), envoyez-nous un e-mail à contact@meilleur-ats.com avec les corrections et les justificatifs. Nous mettons à jour la fiche dans les meilleurs délais.',
   },
   {
     question: 'Proposez-vous des mises en avant sponsorisées ?',
@@ -221,10 +221,10 @@ export default async function EditeursPage({ params }: PageProps) {
             <p className="text-sm text-blue-800">
               <strong>Envoyez votre dossier par e-mail :</strong>{' '}
               <a
-                href="mailto:contact@meilleur-ats.fr?subject=Référencement ATS"
+                href="mailto:contact@meilleur-ats.com?subject=Référencement ATS"
                 className="font-semibold underline hover:text-blue-900"
               >
-                contact@meilleur-ats.fr
+                contact@meilleur-ats.com
               </a>
               . Nous accusons réception sous 48 h et vous informons de l&apos;avancement de
               l&apos;évaluation.
@@ -266,10 +266,10 @@ export default async function EditeursPage({ params }: PageProps) {
                 <p className="mt-1 text-sm text-gray-600">
                   Adressez un e-mail à{' '}
                   <a
-                    href="mailto:contact@meilleur-ats.fr?subject=Mise à jour fiche ATS"
+                    href="mailto:contact@meilleur-ats.com?subject=Mise à jour fiche ATS"
                     className="font-medium text-blue-700 underline hover:text-blue-800"
                   >
-                    contact@meilleur-ats.fr
+                    contact@meilleur-ats.com
                   </a>{' '}
                   en précisant le nom de votre logiciel, les champs à modifier et les nouvelles
                   valeurs avec les justificatifs si nécessaire.
@@ -368,13 +368,13 @@ export default async function EditeursPage({ params }: PageProps) {
             en France. Notre équipe vous accompagne à chaque étape.
           </p>
           <a
-            href="mailto:contact@meilleur-ats.fr?subject=Contact éditeur ATS"
+            href="mailto:contact@meilleur-ats.com?subject=Contact éditeur ATS"
             className="mt-8 inline-flex items-center rounded-lg bg-white px-8 py-3 text-sm font-semibold text-blue-700 shadow-sm transition hover:bg-blue-50"
           >
             Nous contacter
           </a>
           <p className="mt-4 text-sm text-blue-200">
-            contact@meilleur-ats.fr
+            contact@meilleur-ats.com
           </p>
         </div>
       </section>

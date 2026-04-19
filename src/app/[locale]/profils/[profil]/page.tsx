@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from '@/components/LocaleLink';
-import { PROFILES, PROFILE_SLUGS, PROFILE_KEY_TO_SLUG } from '@/lib/constants';
+import { PROFILES, PROFILE_SLUGS, PROFILE_KEY_TO_SLUG, getIndexableMetadata } from '@/lib/constants';
 import { getProductsForProfile } from '@/lib/mdx';
 import { generateProductListSchema, generateBreadcrumbSchema } from '@/lib/schema';
 import { getDictionary, type Locale } from '@/lib/i18n';
@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `Meilleur ATS pour ${profile.shortName} - Comparatif 2026`,
     description: `Comparatif des meilleurs logiciels de recrutement pour ${profile.name.toLowerCase()}. ${profile.description}`,
     alternates: { canonical: `/profils/${profil}` },
+    ...getIndexableMetadata('profile', profil),
   };
 }
 

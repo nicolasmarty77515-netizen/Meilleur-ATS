@@ -45,7 +45,7 @@ export default async function ContactPage({ params }: PageProps) {
           <div className="mt-10 grid gap-8 md:grid-cols-2">
             {/* Contact form */}
             <form
-              action={`mailto:contact@meilleur-ats.fr?subject=Contact depuis ${SITE_NAME}`}
+              action={`mailto:contact@meilleur-ats.com?subject=Contact depuis ${SITE_NAME}`}
               method="POST"
               encType="text/plain"
               className="space-y-5"
