@@ -148,7 +148,10 @@
       "Bash(node scripts/distribute-dates.mjs)",
       "mcp__scheduled-tasks__create_scheduled_task",
       "Bash(curl -sI https://www.meilleur-ats.com/favicon.ico)",
-      "Bash(curl -s https://www.meilleur-ats.com/)"
+      "Bash(curl -s https://www.meilleur-ats.com/)",
+      "Bash(curl -sI https://www.meilleur-ats.com/icon)",
+      "Bash(curl -sI \"https://www.meilleur-ats.com/icon?573887793141ae8b\")",
+      "Bash(curl -s \"https://www.meilleur-ats.com/icon?573887793141ae8b\" -o /tmp/icon-test.png)"
     ]
   }
 }

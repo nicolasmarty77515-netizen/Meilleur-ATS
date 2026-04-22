@@ -13,7 +13,7 @@ function getPreferredLocale(request: NextRequest): string {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Skip static assets, API, feed, images, etc.
+  // Skip static assets, API, feed, images, et metadata files Next.js.
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
@@ -21,6 +21,13 @@ export function middleware(request: NextRequest) {
     pathname === '/sitemap.xml' ||
     pathname === '/robots.txt' ||
     pathname === '/favicon.ico' ||
+    // Next.js metadata routes (icon.tsx, apple-icon.tsx, opengraph-image.tsx…)
+    pathname === '/icon' ||
+    pathname === '/apple-icon' ||
+    pathname === '/opengraph-image' ||
+    pathname === '/twitter-image' ||
+    pathname === '/manifest.webmanifest' ||
+    pathname === '/manifest.json' ||
     /\.(?:png|jpg|jpeg|svg|gif|ico|webp|woff2?|ttf|css|js|map)$/i.test(pathname)
   ) {
     return NextResponse.next();
@@ -52,5 +59,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   // Match all routes except static files
-  matcher: ['/((?!_next|api|feed\\.xml|sitemap\\.xml|robots\\.txt|favicon\\.ico|.*\\..+).*)'],
+  matcher: [
+    '/((?!_next|api|feed\\.xml|sitemap\\.xml|robots\\.txt|favicon\\.ico|icon|apple-icon|opengraph-image|twitter-image|manifest\\.(?:webmanifest|json)|.*\\..+).*)',
+  ],
 };
