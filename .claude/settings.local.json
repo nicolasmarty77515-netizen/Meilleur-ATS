@@ -146,7 +146,9 @@
       "Bash(curl -sI -L --max-time 15 https://meilleur-ats.com/)",
       "Bash(curl -sI -L --max-time 15 https://www.meilleur-ats.com/)",
       "Bash(node scripts/distribute-dates.mjs)",
-      "mcp__scheduled-tasks__create_scheduled_task"
+      "mcp__scheduled-tasks__create_scheduled_task",
+      "Bash(curl -sI https://www.meilleur-ats.com/favicon.ico)",
+      "Bash(curl -s https://www.meilleur-ats.com/)"
     ]
   }
 }
