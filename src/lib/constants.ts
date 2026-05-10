@@ -26,7 +26,7 @@ export const SITE_DESCRIPTION =
 //   - Au moins 3-5 backlinks naturels pointent déjà vers le site
 // ---------------------------------------------------------------------------
 export type PublicationPhase = 1 | 2 | 3;
-export const PUBLICATION_PHASE: PublicationPhase = 1;
+export const PUBLICATION_PHASE: PublicationPhase = 2;
 
 /** Slugs ATS publiés en phase 1 (têtes de gondole). */
 export const PHASE_1_PRODUCT_SLUGS = new Set<string>([
