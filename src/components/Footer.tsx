@@ -27,6 +27,9 @@ const labels = {
     byProfile: 'Par profil',
     byProfileCont: 'Par profil (suite)',
     allRights: 'Tous droits réservés.',
+    legalNotice: 'Mentions légales',
+    privacy: 'Politique de confidentialité',
+    legalLabel: 'Informations légales',
     footerLabel: 'Pied de page',
     navLabel: 'Navigation du pied de page',
     profileLabel: 'Par profil de recruteur',
@@ -51,6 +54,9 @@ const labels = {
     byProfile: 'By Profile',
     byProfileCont: 'By Profile (cont.)',
     allRights: 'All rights reserved.',
+    legalNotice: 'Legal notice',
+    privacy: 'Privacy policy',
+    legalLabel: 'Legal information',
     footerLabel: 'Footer',
     navLabel: 'Footer navigation',
     profileLabel: 'By recruiter profile',
@@ -131,8 +137,20 @@ export default function Footer({ locale = 'fr' }: FooterProps) {
           </nav>
         </div>
 
-        <div className="mt-10 border-t border-gray-200 pt-6 text-center text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} {SITE_NAME}. {t.allRights}
+        <div className="mt-10 border-t border-gray-200 pt-6">
+          <nav
+            aria-label={t.legalLabel}
+            className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm"
+          >
+            <Link href="/mentions-legales" className="text-gray-600 hover:text-blue-700">{t.legalNotice}</Link>
+            <span aria-hidden="true" className="text-gray-300">·</span>
+            <Link href="/confidentialite" className="text-gray-600 hover:text-blue-700">{t.privacy}</Link>
+            <span aria-hidden="true" className="text-gray-300">·</span>
+            <Link href="/contact" className="text-gray-600 hover:text-blue-700">{t.contact}</Link>
+          </nav>
+          <p className="mt-4 text-center text-sm text-gray-500">
+            &copy; {new Date().getFullYear()} {SITE_NAME}. {t.allRights}
+          </p>
         </div>
       </div>
     </footer>

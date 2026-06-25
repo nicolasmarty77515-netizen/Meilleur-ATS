@@ -5,6 +5,10 @@ export const SITE_URL = 'https://meilleur-ats.com';
 export const SITE_DESCRIPTION =
   'Comparatif indépendant des meilleurs logiciels de recrutement (ATS) en France. Trouvez la solution adaptée à votre profil : cabinet, indépendant, RH, intérim.';
 
+/** Adresse de contact publique (mentions légales, confidentialité, formulaire).
+ *  ⚠️ Doit pointer vers une boîte qui RÉPOND : créer la boîte ou une redirection chez OVH. */
+export const SITE_CONTACT_EMAIL = 'contact@meilleur-ats.com';
+
 // ---------------------------------------------------------------------------
 // Publication phases (progressive SEO launch)
 // ---------------------------------------------------------------------------

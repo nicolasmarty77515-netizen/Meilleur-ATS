@@ -47,6 +47,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   addPage('/editeurs', { freq: 'monthly', priority: 0.5 });
   addPage('/a-propos', { freq: 'monthly', priority: 0.3 });
   addPage('/contact', { freq: 'monthly', priority: 0.4 });
+  addPage('/mentions-legales', { freq: 'monthly', priority: 0.2 });
+  addPage('/confidentialite', { freq: 'monthly', priority: 0.2 });
 
   // Profile pages (seulement si la phase les autorise)
   for (const slug of PROFILE_SLUGS) {
