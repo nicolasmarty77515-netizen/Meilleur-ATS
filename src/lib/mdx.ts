@@ -8,7 +8,7 @@ import type {
   ComparativeFrontmatter,
   ProfileSlug,
 } from './types';
-import { isIndexable } from './constants';
+import { isIndexable, INDEXED_VERSUS_SLUGS } from './constants';
 
 const contentDir = path.join(process.cwd(), 'src', 'content');
 
@@ -154,21 +154,52 @@ export function getVisibleComparatives(): (ComparativeFrontmatter & { content: s
   return getAllComparatives().filter((c) => isIndexable('versus', c.slug));
 }
 
+/** Découpe un slug "a-vs-b" en deux slugs produits valides, sinon null. */
+function parseVersusSlug(slug: string): [string, string] | null {
+  const parts = slug.split('-vs-');
+  if (parts.length !== 2) return null;
+  const valid = new Set(getProductSlugs());
+  if (!valid.has(parts[0]) || !valid.has(parts[1])) return null;
+  return [parts[0], parts[1]];
+}
+
 export function getComparativeBySlug(
   slug: string
 ): (ComparativeFrontmatter & { content: string }) | null {
+  // 1) Comparatif rédigé (fichier MDX) → prioritaire
   const filePath = path.join(contentDir, 'comparatifs', `${slug}.mdx`);
-  if (!fs.existsSync(filePath)) return null;
-  const raw = fs.readFileSync(filePath, 'utf-8');
-  const { data, content } = matter(raw);
-  return { ...(data as ComparativeFrontmatter), content };
+  if (fs.existsSync(filePath)) {
+    const raw = fs.readFileSync(filePath, 'utf-8');
+    const { data, content } = matter(raw);
+    return { ...(data as ComparativeFrontmatter), content };
+  }
+
+  // 2) Sinon, comparatif synthétisé à partir des données produits (paires générées)
+  const pair = parseVersusSlug(slug);
+  if (!pair) return null;
+  const a = getProductBySlug(pair[0]);
+  const b = getProductBySlug(pair[1]);
+  if (!a || !b) return null;
+
+  return {
+    slug,
+    productA: a.slug,
+    productB: b.slug,
+    title: `${a.name} vs ${b.name} : quel ATS choisir ?`,
+    description: `Comparatif ${a.name} vs ${b.name} : notes, fonctionnalités, tarifs, intégrations et points forts. Trouvez le logiciel de recrutement le plus adapté à vos besoins.`,
+    updatedAt: a.updatedAt > b.updatedAt ? a.updatedAt : b.updatedAt,
+    content: '',
+  };
 }
 
 export function getComparativeSlugs(): string[] {
   const dir = path.join(contentDir, 'comparatifs');
-  if (!fs.existsSync(dir)) return [];
-  return fs
-    .readdirSync(dir)
-    .filter((f) => f.endsWith('.mdx'))
-    .map((f) => f.replace('.mdx', ''));
+  const fromFiles = fs.existsSync(dir)
+    ? fs
+        .readdirSync(dir)
+        .filter((f) => f.endsWith('.mdx'))
+        .map((f) => f.replace('.mdx', ''))
+    : [];
+  // + toutes les paires indexées « France-first », même sans fichier MDX (synthétisées)
+  return Array.from(new Set([...fromFiles, ...INDEXED_VERSUS_SLUGS]));
 }

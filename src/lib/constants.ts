@@ -55,13 +55,51 @@ export const PHASE_1_GUIDE_SLUGS = new Set<string>([
   'multiposting-guide',
 ]);
 
+// ---------------------------------------------------------------------------
+// Pages comparatives « X vs Y » indexées (sélection « France-first »)
+// ---------------------------------------------------------------------------
+// On GÉNÈRE et on INDEXE uniquement les paires entre ces ATS (C(n,2) paires).
+// Objectif : éviter les milliers de pages auto-générées « thin » (risque de
+// pénalité Google « scaled content »). Les autres paires restent en noindex.
+//
+// ⚠️ Nicoka est volontairement ABSENT : aucune paire nicoka-vs-X n'est indexée
+//    pour l'instant (revue prévue septembre 2026). Liste 100 % éditable.
+// ---------------------------------------------------------------------------
+export const INDEXED_VERSUS_ATS: string[] = [
+  // Géants mondiaux à forte recherche en France
+  'workday', 'personio', 'bamboohr', 'greenhouse', 'lever',
+  'teamtailor', 'smartrecruiters', 'workable', 'recruitee', 'ashby', 'bullhorn',
+  // Éditeurs français (meilleur ROI SEO, moins concurrentiels)
+  'lucca', 'flatchr', 'taleez', 'cegid-talent', 'beetween',
+  'digital-recruiters', 'cleverconnect', 'softy', 'jobaffinity',
+];
+
+/** Slug canonique d'une paire comparative (ordre alphabétique → 1 seule URL/paire). */
+export function versusSlug(a: string, b: string): string {
+  return [a, b].sort().join('-vs-');
+}
+
+/** Toutes les paires indexées = combinaisons des INDEXED_VERSUS_ATS (slugs canoniques). */
+export const INDEXED_VERSUS_SLUGS: ReadonlySet<string> = (() => {
+  const set = new Set<string>();
+  const ats = [...INDEXED_VERSUS_ATS].sort();
+  for (let i = 0; i < ats.length; i++) {
+    for (let j = i + 1; j < ats.length; j++) {
+      set.add(versusSlug(ats[i], ats[j]));
+    }
+  }
+  return set;
+})();
+
 export type IndexableType = 'home' | 'page' | 'product' | 'guide' | 'versus' | 'profile';
 
 /** True si la page doit être indexée par Google en fonction de PUBLICATION_PHASE. */
 export function isIndexable(type: IndexableType, slug?: string): boolean {
   // Pages statiques info : toujours indexées
   if (type === 'home' || type === 'page') return true;
-  // Phase 3 : tout indexé
+  // Comparatifs « X vs Y » : pilotés par l'allowlist France-first (indépendant de la phase)
+  if (type === 'versus') return slug ? INDEXED_VERSUS_SLUGS.has(slug) : false;
+  // Phase 3 : tout le reste indexé
   if (PUBLICATION_PHASE >= 3) return true;
 
   if (type === 'product') {
@@ -73,7 +111,6 @@ export function isIndexable(type: IndexableType, slug?: string): boolean {
     return slug ? PHASE_1_GUIDE_SLUGS.has(slug) : false;
   }
   if (type === 'profile') return PUBLICATION_PHASE >= 2;
-  if (type === 'versus') return PUBLICATION_PHASE >= 3;
 
   return false;
 }

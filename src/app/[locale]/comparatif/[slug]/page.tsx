@@ -91,6 +91,26 @@ export default async function ComparatifPage({ params }: PageProps) {
             <ExportPDF className="shrink-0" />
           </div>
 
+          {/* Présentation synthétique (texte unique par paire, généré depuis les données) */}
+          <div className="prose prose-blue mt-6 max-w-none">
+            <p>
+              <strong>{productA.name}</strong> ({productA.headquarter}) — {productA.description}
+            </p>
+            <p>
+              <strong>{productB.name}</strong> ({productB.headquarter}) — {productB.description}
+            </p>
+            <p>
+              {productA.ratings.overall === productB.ratings.overall
+                ? `${productA.name} et ${productB.name} obtiennent la même note globale (${productA.ratings.overall}/5) : votre choix dépendra des critères détaillés ci-dessous.`
+                : `Sur la note globale, ${
+                    productA.ratings.overall > productB.ratings.overall ? productA.name : productB.name
+                  } prend l'avantage (${Math.max(productA.ratings.overall, productB.ratings.overall)}/5 contre ${Math.min(
+                    productA.ratings.overall,
+                    productB.ratings.overall,
+                  )}/5). Le comparatif détaillé ci-dessous vous aidera à trancher.`}
+            </p>
+          </div>
+
           {/* Ratings comparison */}
           <section className="mt-10">
             <h2 className="text-2xl font-bold text-gray-900">Comparaison des notes</h2>
