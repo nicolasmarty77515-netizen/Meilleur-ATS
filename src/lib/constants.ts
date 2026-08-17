@@ -30,7 +30,7 @@ export const SITE_CONTACT_EMAIL = 'contact@meilleur-ats.com';
 //   - Au moins 3-5 backlinks naturels pointent déjà vers le site
 // ---------------------------------------------------------------------------
 export type PublicationPhase = 1 | 2 | 3;
-export const PUBLICATION_PHASE: PublicationPhase = 2;
+export const PUBLICATION_PHASE: PublicationPhase = 3;
 
 /** Slugs ATS publiés en phase 1 (têtes de gondole). */
 export const PHASE_1_PRODUCT_SLUGS = new Set<string>([
@@ -74,6 +74,44 @@ export const INDEXED_VERSUS_ATS: string[] = [
   'digital-recruiters', 'cleverconnect', 'softy', 'jobaffinity',
 ];
 
+// ---------------------------------------------------------------------------
+// Comparatifs RÉDIGÉS indexés en phase 3 (hors allowlist France-first)
+// ---------------------------------------------------------------------------
+// Ces paires ont un fichier MDX écrit à la main dans src/content/comparatifs/ :
+// contenu éditorial propre, donc aucun risque « scaled content » à les indexer.
+// Elles restent noindex en phase 1-2, et passent en index dès la phase 3.
+//
+// ⚠️ Les 57 comparatifs « Nicoka vs X » sont volontairement ABSENTS : Nicoka
+//    appartient à l'éditeur du site, indexer ces pages sur un comparatif
+//    présenté comme indépendant pose une question de conflit d'intérêt.
+//    Revue prévue septembre 2026 (cf. INDEXED_VERSUS_ATS ci-dessus).
+// ---------------------------------------------------------------------------
+export const INDEXED_VERSUS_WRITTEN_SLUGS = new Set<string>([
+  'altays-vs-cegid-talent',
+  'bamboohr-vs-breezy-hr',
+  'beetween-vs-we-recruit',
+  'breezy-hr-vs-workable',
+  'bullhorn-vs-eolia',
+  'bullhorn-vs-gestmax',
+  'bullhorn-vs-jarvi',
+  'bullhorn-vs-neostaff',
+  'bullhorn-vs-zoho-recruit',
+  'cegid-talent-vs-successfactors',
+  'eolia-vs-gestmax',
+  'eqwa-vs-flatchr',
+  'eqwa-vs-taleez',
+  'flatchr-vs-we-recruit',
+  'gestmax-vs-neostaff',
+  'jarvi-vs-jobaffinity',
+  'jarvi-vs-manatal',
+  'jarvi-vs-zoho-recruit',
+  'layan-vs-manatal',
+  'layan-vs-taleez',
+  'manatal-vs-workable',
+  'successfactors-vs-taleo',
+  'taleez-vs-we-recruit',
+]);
+
 /** Slug canonique d'une paire comparative (ordre alphabétique → 1 seule URL/paire). */
 export function versusSlug(a: string, b: string): string {
   return [a, b].sort().join('-vs-');
@@ -97,8 +135,13 @@ export type IndexableType = 'home' | 'page' | 'product' | 'guide' | 'versus' | '
 export function isIndexable(type: IndexableType, slug?: string): boolean {
   // Pages statiques info : toujours indexées
   if (type === 'home' || type === 'page') return true;
-  // Comparatifs « X vs Y » : pilotés par l'allowlist France-first (indépendant de la phase)
-  if (type === 'versus') return slug ? INDEXED_VERSUS_SLUGS.has(slug) : false;
+  // Comparatifs « X vs Y » : allowlist France-first (toutes phases), + comparatifs
+  // rédigés à la main à partir de la phase 3.
+  if (type === 'versus') {
+    if (!slug) return false;
+    if (INDEXED_VERSUS_SLUGS.has(slug)) return true;
+    return PUBLICATION_PHASE >= 3 && INDEXED_VERSUS_WRITTEN_SLUGS.has(slug);
+  }
   // Phase 3 : tout le reste indexé
   if (PUBLICATION_PHASE >= 3) return true;
 
